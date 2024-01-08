@@ -1,6 +1,6 @@
 #sideBar {
   width: calc(15vw - 20px);
-
+  height: 71vh;
   background-color: #49ae392e;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
