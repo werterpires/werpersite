@@ -3,11 +3,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@100;200;300;400;700&display=swap");
 
 :root {
+  --darkGreen: #292c28;
+  --green: #2f432b;
   --orange: #f67c19;
   --softHover: #8ec2f038;
   --softOrange: #d5b69dfc;
   --fontMont: "Montserrat Alternates", sans-serif;
   --fontAnek: "Anek Gujarati", sans-serif;
+  --darkPlace: #9f8975;
+  --lightPlace: #f8d5b7;
 }
 
 * {
@@ -18,5 +22,64 @@
 }
 
 html {
-  background-color: #292c28;
+  background-color: var(--darkGreen);
+}
+
+.hidden {
+  display: none;
+}
+
+.updateForm input,
+.updateForm textarea {
+  padding: 5px;
+  font-family: var(--fontAnek);
+  font-weight: 400;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 17px;
+
+  border-radius: 5px;
+
+  cursor: default;
+  transition: 0.2s ease-in-out all;
+  resize: vertical;
+}
+
+.updateForm input:hover,
+.updateForm textarea:hover {
+  background-color: var(--softHover);
+  background-color: var(--darkGreen);
+  color: white;
+}
+
+.updateForm input:focus,
+.updateForm textarea:focus {
+  background-color: var(--softHover);
+  color: var(--darkGreen);
+  cursor: text;
+}
+
+.tinyInput {
+  width: 5vw;
+}
+
+.smallInput {
+  width: 10vw;
+}
+
+.mediumInput {
+  width: 20vw;
+}
+
+.bigInput {
+  width: 30vw;
+}
+
+.largeInput {
+  width: 40vw;
+}
+
+.hugeInput {
+  width: 50vw;
 }
