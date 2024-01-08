@@ -1,1 +1,26 @@
-<p>update-form works!</p>
+<form
+  class="updateForm"
+  (input)="saveButton.classList.remove('hidden')"
+  (mouseenter)="deleteButton.classList.remove('hidden')"
+  (mouseleave)="deleteButton.classList.add('hidden')"
+>
+  <img
+    #clickButton
+    class="formControlIcon"
+    src="assets/icons/clickIcon.svg"
+    alt="ícone de uma mão com o dedo indicador dentro de um círculo"
+  />
+  <ng-content></ng-content>
+  <img
+    #saveButton
+    class="formControlIcon hidden"
+    src="assets/icons/saveIcon.svg"
+    alt="ícone de um disquete"
+  />
+  <img
+    #deleteButton
+    class="formControlIcon hidden"
+    src="assets/icons/trashIcon.svg"
+    alt="ícone de uma lixeira"
+  />
+</form>
