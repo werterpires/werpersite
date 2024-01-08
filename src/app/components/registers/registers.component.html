@@ -1,0 +1,12 @@
+<app-container
+  ><div id="contentContainer">
+    <app-side-bar
+      [menuItens]="menuItens"
+      (choiceEmitter)="choiceComponent($event)"
+    >
+    </app-side-bar>
+    <app-operational-container>
+      <app-terms-types *ngIf="components['termsTypes']"></app-terms-types>
+    </app-operational-container>
+  </div>
+</app-container>
