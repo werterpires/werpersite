@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { ContainerComponent } from '../shared/container/container.component';
 import { SideBarComponent } from '../shared/side-bar/side-bar.component';
 import { MenuItem } from '../shared/side-bar/types';
-import { Components } from './types';
 import { TermsTypesComponent } from './terms-types/terms-types.component';
 import { NgIf } from '@angular/common';
 import { OperationalContainerComponent } from '../shared/operational-container/operational-container.component';
+import { Components } from '../shared/content-manager/types';
+import { ContentManagerComponent } from '../shared/content-manager/content-manager.component';
 
 @Component({
   selector: 'app-registers',
@@ -16,6 +17,7 @@ import { OperationalContainerComponent } from '../shared/operational-container/o
     SideBarComponent,
     TermsTypesComponent,
     OperationalContainerComponent,
+    ContentManagerComponent,
   ],
   templateUrl: './registers.component.html',
   styleUrl: './registers.component.css',
