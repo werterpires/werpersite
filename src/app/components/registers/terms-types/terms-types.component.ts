@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { UpdateFormComponent } from '../../shared/update-form/update-form.component';
 
 @Component({
   selector: 'app-terms-types',
   standalone: true,
-  imports: [],
+  imports: [UpdateFormComponent],
   templateUrl: './terms-types.component.html',
-  styleUrl: './terms-types.component.css'
+  styleUrl: './terms-types.component.css',
 })
-export class TermsTypesComponent {
-
-}
+export class TermsTypesComponent {}
