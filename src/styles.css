@@ -18,7 +18,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Fira Sans", sans-serif;
 }
 
 html {
@@ -61,25 +60,25 @@ html {
 }
 
 .tinyInput {
-  width: 5vw;
+  width: 100px;
 }
 
 .smallInput {
-  width: 10vw;
+  width: 144px;
 }
 
 .mediumInput {
-  width: 20vw;
+  width: 188px;
 }
 
 .bigInput {
-  width: 30vw;
+  width: 232px;
 }
 
 .largeInput {
-  width: 40vw;
+  width: 276px;
 }
 
 .hugeInput {
-  width: 50vw;
+  width: 320px;
 }
