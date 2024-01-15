@@ -1,0 +1,114 @@
+#logonContainer {
+  width: 50vw;
+  height: 95vh;
+  margin: auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#logonSquare {
+  width: 50vw;
+  min-width: 320px;
+  height: fit-content;
+  padding: 25px;
+  background-color: var(--softOrange);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  gap: 40px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logonLogo {
+  width: 95px;
+}
+
+#logonForm {
+  width: 45vw;
+  min-width: 232px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.longonLabel {
+  width: fit-content;
+  position: relative;
+  left: 10px;
+  bottom: 38px;
+  padding: 0 4px;
+  border-radius: 5px;
+  color: var(--darkGreen);
+  background-color: var(--softOrange);
+  transition: all 0.2s ease;
+  pointer-events: none;
+
+  font-family: var(--fontMont);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.logonInput {
+  padding: 5px 3px 1px 15px;
+  background-color: transparent;
+  border: 2px solid var(--darkGreen);
+  color: var(--green);
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  font-family: var(--fontAnek);
+  outline: none;
+}
+
+.logonSelect {
+  padding: 5px 3px 1px 15px;
+  background-color: transparent;
+  border: 2px solid var(--darkGreen);
+  color: var(--green);
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  font-family: var(--fontAnek);
+  outline: none;
+}
+
+.logonInput:focus + .longonLabel,
+.logonInput:not(:placeholder-shown) + .longonLabel,
+.logonInput:-webkit-autofill + .longonLabel,
+.logonSelect:focus + .longonLabel,
+.logonSelect:not(:placeholder-shown) + .longonLabel,
+.logonSelect:-webkit-autofill + .longonLabel {
+  translate: 0 -16px;
+  font-size: 13px;
+}
+
+.logonFormLine {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logonFormField {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.logonButton {
+  width: fit-content;
+  padding: 10px;
+  background-color: var(--orange);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: var(--fontMont);
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}

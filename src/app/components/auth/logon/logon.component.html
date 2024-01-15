@@ -1,1 +1,158 @@
-<p>logon works!</p>
+<div id="logonContainer">
+  <div id="logonSquare">
+    <img src="assets/img/logo.png" id="logonLogo" alt="Logo do app" />
+    <div id="logonForms">
+      <ng-container *ngIf="step === 1">
+        <form id="logonForm">
+          <div class="logonFormLine">
+            <div class="logonFormField">
+              <input
+                type="text"
+                name="logonName"
+                class="logonInput bigInput"
+                placeholder=""
+                #logonName
+                [(ngModel)]="createSignerUserData.name"
+              />
+              <label class="longonLabel" for="logonName">Nome </label>
+            </div>
+            <div class="logonFormField">
+              <input
+                type="text"
+                name="logonSurname"
+                class="logonInput bigInput"
+                placeholder=""
+                [(ngModel)]="createSignerUserData.surname"
+              />
+              <label class="longonLabel" for="logonSurname">Sobrenome </label>
+            </div>
+          </div>
+          <div class="logonFormLine">
+            <div class="logonFormField">
+              <input
+                type="text"
+                class="logonInput bigInput"
+                placeholder=""
+                name="cpf"
+                [(ngModel)]="createSignerUserData.cpf"
+                (input)="maskCpf()"
+              />
+              <label class="longonLabel">CPF </label>
+            </div>
+            <div class="logonFormField">
+              <input
+                type="text"
+                class="logonInput bigInput"
+                placeholder=""
+                name="cellphone"
+                [(ngModel)]="createSignerUserData.cellphone"
+                (input)="maskPhone()"
+              />
+              <label class="longonLabel">Telefone </label>
+            </div>
+          </div>
+          <div class="logonFormLine">
+            <div class="logonFormField">
+              <input
+                type="email"
+                class="logonInput bigInput"
+                placeholder=""
+                [(ngModel)]="createSignerUserData.email"
+                name="email"
+              />
+              <label class="longonLabel">Email </label>
+            </div>
+            <div class="logonFormField">
+              <input
+                type="email"
+                class="logonInput bigInput"
+                placeholder=""
+                name="confirmEmail"
+                [(ngModel)]="confirmEmail"
+              />
+              <label class="longonLabel">Confirmar Email </label>
+            </div>
+          </div>
+          <div class="logonFormLine">
+            <div class="logonFormField">
+              <input
+                type="password"
+                class="logonInput bigInput"
+                placeholder=""
+                name="password"
+                [(ngModel)]="createSignerUserData.password"
+              />
+              <label class="longonLabel">Senha </label>
+            </div>
+            <div class="logonFormField">
+              <input
+                type="password"
+                class="logonInput bigInput"
+                placeholder=""
+                name="confirmPassword"
+                [(ngModel)]="confirmPassword"
+              />
+              <label class="longonLabel">Confirmar senha </label>
+            </div>
+          </div>
+          <div class="logonFormField">
+            <div class="logonFormLine">
+              <button type="button" class="logonButton" (click)="step = 2">
+                Continuar
+              </button>
+            </div>
+          </div>
+        </form>
+      </ng-container>
+      <ng-container *ngIf="step === 2">
+        <form id="logonForm">
+          <div class="logonFormLine">
+            <div class="logonFormField">
+              <input
+                type="text"
+                name="logonCompanyName"
+                class="logonInput largeInput"
+                placeholder=""
+              />
+              <label class="longonLabel" for="logonCompanyName"
+                >Nome da empresa
+              </label>
+            </div>
+            <div class="logonFormField">
+              <select
+                name="personType"
+                id="personType"
+                class="logonSelect mediumInput"
+              >
+                <option value="j">Jurídica</option>
+                <option value="f">Física</option>
+              </select>
+              <label class="longonLabel" for="logonSurname"
+                >Tipo de pessoa</label
+              >
+            </div>
+          </div>
+          <div class="logonFormLine">
+            <button type="button" (click)="step = 1" class="logonButton">
+              Voltar
+            </button>
+            <button
+              type="button"
+              (click)="termsSign = true"
+              class="logonButton"
+            >
+              Cadastrar-se
+            </button>
+          </div>
+        </form>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<ng-container *ngIf="termsSign">
+  <app-terms-sign
+    [roleId]="2"
+    (cancelEmitter)="termsSign = false"
+    (continueEmmitter)="subscribe($event)"
+  ></app-terms-sign>
+</ng-container>
