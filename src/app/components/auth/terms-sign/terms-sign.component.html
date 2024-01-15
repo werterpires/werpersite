@@ -1,0 +1,43 @@
+<app-modal>
+  <div class="outsideDiv">
+    <div class="insideDiv">
+      <div class="term" *ngFor="let term of allroleTerms">
+        <h1 class="termType" [title]="term.termType.termTypeDescription">
+          {{ term.termType.termTypeName }}
+        </h1>
+
+        <h3 class="termVersion" [title]="term.termDescription">
+          Versão: {{ term.termVersion }}
+        </h3>
+        <div class="termText" [innerHTML]="sanitizeHTML(term.termText)">
+          <p>almoço</p>
+        </div>
+      </div>
+    </div>
+    <div id="termsAccepts" *ngIf="signTerms">
+      <div class="termAccept" *ngFor="let term of allroleTerms; let i = index">
+        <input
+          type="checkbox"
+          [name]="term.termType.termTypeName"
+          [value]="term.termId"
+          id="{{ term.termId }}"
+          [(ngModel)]="signTerms[i].accept"
+        />
+
+        <label for="{{ term.termId }}"
+          >Aceitar {{ term.termType.termTypeName }}</label
+        >
+      </div>
+    </div>
+    <div id="buttons">
+      <button class="signButton" (click)="continue(false)">Cancelar</button>
+      <button
+        class="signButton"
+        (click)="continue(true)"
+        [disabled]="isContinueButtonDisabled()"
+      >
+        Continuar
+      </button>
+    </div>
+  </div>
+</app-modal>
