@@ -1,0 +1,5 @@
+.errorMessage {
+  font-family: var(--fontAnek);
+  color: red;
+  font-size: 13px;
+}
