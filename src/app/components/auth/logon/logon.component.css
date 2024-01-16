@@ -37,11 +37,13 @@
 
 .longonLabel {
   width: fit-content;
-  position: relative;
-  left: 10px;
-  bottom: 38px;
+  position: absolute;
+  /* left: 10px;
+  bottom: 38px; */
   padding: 0 4px;
   border-radius: 5px;
+  translate: 10px 9px;
+
   color: var(--darkGreen);
   background-color: var(--softOrange);
   transition: all 0.2s ease;
@@ -82,7 +84,7 @@
 .logonSelect:focus + .longonLabel,
 .logonSelect:not(:placeholder-shown) + .longonLabel,
 .logonSelect:-webkit-autofill + .longonLabel {
-  translate: 0 -16px;
+  translate: 10px -9px;
   font-size: 13px;
 }
 
@@ -111,4 +113,10 @@
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+#seePasswordIcon {
+  width: 27px;
+  position: absolute;
+  translate: 195px 4px;
 }

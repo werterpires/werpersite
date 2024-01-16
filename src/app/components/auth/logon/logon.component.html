@@ -5,99 +5,205 @@
       <ng-container *ngIf="step === 1">
         <form id="logonForm">
           <div class="logonFormLine">
-            <div class="logonFormField">
+            <div class="logonFormField bigField">
               <input
                 type="text"
                 name="logonName"
-                class="logonInput bigInput"
+                class="logonInput bigField"
                 placeholder=""
                 #logonName
                 [(ngModel)]="createSignerUserData.name"
+                (blur)="
+                  logonService.validateNames(
+                    formErrors,
+                    logonName.value,
+                    'name'
+                  )
+                "
               />
               <label class="longonLabel" for="logonName">Nome </label>
+              <ng-container *ngIf="formErrors['name'].active">
+                <app-form-error
+                  [errorText]="formErrors['name'].errorText"
+                ></app-form-error>
+              </ng-container>
             </div>
-            <div class="logonFormField">
+            <div class="logonFormField bigField">
               <input
                 type="text"
                 name="logonSurname"
-                class="logonInput bigInput"
+                class="logonInput bigField"
                 placeholder=""
+                #logonSurname
                 [(ngModel)]="createSignerUserData.surname"
+                (blur)="
+                  logonService.validateNames(
+                    formErrors,
+                    logonSurname.value,
+                    'surname'
+                  )
+                "
               />
               <label class="longonLabel" for="logonSurname">Sobrenome </label>
+              <ng-container *ngIf="formErrors['surname'].active">
+                <app-form-error
+                  [errorText]="formErrors['surname'].errorText"
+                ></app-form-error>
+              </ng-container>
             </div>
           </div>
           <div class="logonFormLine">
             <div class="logonFormField">
               <input
                 type="text"
-                class="logonInput bigInput"
+                class="logonInput bigField"
                 placeholder=""
                 name="cpf"
+                #cpf
                 [(ngModel)]="createSignerUserData.cpf"
                 (input)="maskCpf()"
+                (blur)="logonService.validateCpf(formErrors, cpf.value, 'cpf')"
               />
               <label class="longonLabel">CPF </label>
+              <ng-container *ngIf="formErrors['cpf'].active">
+                <app-form-error
+                  [errorText]="formErrors['cpf'].errorText"
+                ></app-form-error>
+              </ng-container>
             </div>
             <div class="logonFormField">
               <input
                 type="text"
-                class="logonInput bigInput"
+                class="logonInput bigField"
                 placeholder=""
                 name="cellphone"
+                #cellphone
                 [(ngModel)]="createSignerUserData.cellphone"
                 (input)="maskPhone()"
+                (blur)="
+                  logonService.validateCellPhone(
+                    formErrors,
+                    cellphone.value,
+                    'cellphone'
+                  )
+                "
               />
               <label class="longonLabel">Telefone </label>
+              <ng-container *ngIf="formErrors['cellphone'].active">
+                <app-form-error
+                  [errorText]="formErrors['cellphone'].errorText"
+                ></app-form-error>
+              </ng-container>
             </div>
           </div>
           <div class="logonFormLine">
             <div class="logonFormField">
               <input
                 type="email"
-                class="logonInput bigInput"
+                class="logonInput bigField"
                 placeholder=""
+                #email
                 [(ngModel)]="createSignerUserData.email"
                 name="email"
+                (blur)="
+                  logonService.validateEmail(formErrors, email.value, 'email')
+                "
               />
               <label class="longonLabel">Email </label>
+              <ng-container *ngIf="formErrors['email'].active">
+                <app-form-error
+                  [errorText]="formErrors['email'].errorText"
+                ></app-form-error>
+              </ng-container>
             </div>
             <div class="logonFormField">
               <input
                 type="email"
-                class="logonInput bigInput"
+                class="logonInput bigField"
                 placeholder=""
                 name="confirmEmail"
+                #confirmEmailInput
                 [(ngModel)]="confirmEmail"
+                (blur)="
+                  logonService.validateIsEqual(
+                    formErrors,
+                    email.value,
+                    confirmEmailInput.value,
+                    'emailConfirm'
+                  )
+                "
               />
               <label class="longonLabel">Confirmar Email </label>
+              <ng-container *ngIf="formErrors['emailConfirm'].active">
+                <app-form-error
+                  [errorText]="formErrors['emailConfirm'].errorText"
+                ></app-form-error>
+              </ng-container>
             </div>
           </div>
           <div class="logonFormLine">
-            <div class="logonFormField">
+            <div class="logonFormField bigField">
               <input
                 type="password"
-                class="logonInput bigInput"
+                class="logonInput bigField"
                 placeholder=""
                 name="password"
+                #password
                 [(ngModel)]="createSignerUserData.password"
+                (blur)="
+                  logonService.validatePassword(
+                    formErrors,
+                    password.value,
+                    'password'
+                  )
+                "
+                (mouseover)="seePasswordIcon.classList.remove('hidden')"
+                (mouseleave)="seePasswordIcon.classList.add('hidden')"
               />
               <label class="longonLabel">Senha </label>
+              <img
+                id="seePasswordIcon"
+                class="hidden"
+                #seePasswordIcon
+                src="assets/icons/seeIcon.svg"
+                alt="Icone de um olho"
+                title="Mostrar senha"
+              />
+              <ng-container *ngIf="formErrors['password'].active">
+                <app-form-error
+                  [errorText]="formErrors['password'].errorText"
+                ></app-form-error>
+              </ng-container>
             </div>
             <div class="logonFormField">
               <input
                 type="password"
-                class="logonInput bigInput"
+                class="logonInput bigField"
                 placeholder=""
                 name="confirmPassword"
+                #confirmPasswordInput
                 [(ngModel)]="confirmPassword"
+                (blur)="
+                  logonService.validateIsEqual(
+                    formErrors,
+                    password.value,
+                    confirmPasswordInput.value,
+                    'passwordConfirm'
+                  )
+                "
               />
-              <label class="longonLabel">Confirmar senha </label>
+              <label class="longonLabel">Confirmar senha</label>
+
+              <ng-container *ngIf="formErrors['passwordConfirm'].active">
+                <app-form-error
+                  [errorText]="formErrors['passwordConfirm'].errorText"
+                ></app-form-error>
+              </ng-container>
             </div>
           </div>
           <div class="logonFormField">
             <div class="logonFormLine">
-              <button type="button" class="logonButton" (click)="step = 2">
+              <button type="button" class="logonButton" (click)="goToStep2()">
                 Continuar
               </button>
             </div>
@@ -122,7 +228,7 @@
               <select
                 name="personType"
                 id="personType"
-                class="logonSelect mediumInput"
+                class="logonSelect mediumField"
               >
                 <option value="j">Jurídica</option>
                 <option value="f">Física</option>

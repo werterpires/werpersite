@@ -8,11 +8,22 @@ import { FormsModule } from '@angular/forms';
 import { Masks } from '../../shared/utils/masks';
 import { Validates } from '../../shared/utils/validates';
 import { CreateSignerUserDto } from './types';
+import { IFormErrors } from '../../shared/form-error/types';
+import { FormErrorComponent } from '../../shared/form-error/form-error.component';
+import { LogonService } from './logon.service';
+import { AlertsService } from '../../shared/alerts/alerts.service';
 
 @Component({
   selector: 'app-logon',
   standalone: true,
-  imports: [NgIf, NgClass, TermsSignComponent, CpfMaskPipe, FormsModule],
+  imports: [
+    NgIf,
+    NgClass,
+    TermsSignComponent,
+    CpfMaskPipe,
+    FormsModule,
+    FormErrorComponent,
+  ],
   templateUrl: './logon.component.html',
   styleUrl: './logon.component.css',
 })
@@ -35,13 +46,54 @@ export class LogonComponent {
     occupationsPermissions: [],
     signedTermsIds: [],
   };
+
+  formErrors: IFormErrors = {
+    name: {
+      errorText: ['O nome deve possuir pelo menos 3 caracteres'],
+      active: false,
+    },
+    surname: {
+      errorText: ['O sobrenome deve possuir pelo menos 3 caracteres'],
+      active: false,
+    },
+    cpf: {
+      errorText: ['CPF inválido'],
+      active: false,
+    },
+    cellphone: {
+      errorText: ['Celular inválido'],
+      active: false,
+    },
+    email: {
+      errorText: ['Email inválido'],
+      active: false,
+    },
+    emailConfirm: {
+      errorText: ['emails não conferem'],
+      active: false,
+    },
+    password: {
+      errorText: [
+        `A senha deve ter entre 8 e 16 caracteres e ter pelo menos uma letra maiúscula, uma letra minúscula, um número e um dos seguintes caracteres especiais: !@#$%^&*()_+{}[]|\:;"'<>,.?/`,
+      ],
+      active: false,
+    },
+    passwordConfirm: {
+      errorText: ['Senhas não conferem'],
+      active: false,
+    },
+  };
   confirmEmail: string = '';
   confirmPassword: string = '';
 
-  step = 1;
+  step = 2;
   termsSign = false;
 
-  constructor(private loaderService: LoaderService) {}
+  constructor(
+    private loaderService: LoaderService,
+    public logonService: LogonService,
+    private alertsService: AlertsService
+  ) {}
 
   subscribe(signedTerms: ITermSign[]) {
     this.loaderService.showLoader();
@@ -49,8 +101,26 @@ export class LogonComponent {
     this.termsSign = false;
   }
 
+  goToStep2() {
+    const errorMensage = this.logonService.validateForm1(
+      this.createSignerUserData,
+      this.confirmEmail,
+      this.confirmPassword
+    );
+
+    if (errorMensage.length > 0) {
+      this.alertsService.showAlerts(
+        'error',
+        'Dados inconsistentes',
+        errorMensage
+      );
+      return;
+    }
+    this.step = 2;
+  }
+
+  //------------------Masks------------------------------------------------------
   maskCpf() {
-    console.log('sim');
     this.createSignerUserData.cpf = Masks.cpfMask(
       this.createSignerUserData.cpf
     );
