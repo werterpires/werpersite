@@ -59,26 +59,26 @@ html {
   cursor: text;
 }
 
-.tinyInput {
+.tinyField {
   width: 100px;
 }
 
-.smallInput {
+.smallField {
   width: 144px;
 }
 
-.mediumInput {
+.mediumField {
   width: 188px;
 }
 
-.bigInput {
+.bigField {
   width: 232px;
 }
 
-.largeInput {
+.largeField {
   width: 276px;
 }
 
-.hugeInput {
+.hugeField {
   width: 320px;
 }
