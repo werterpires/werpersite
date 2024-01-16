@@ -1,0 +1,31 @@
+<div *ngIf="showAlert">
+  <app-modal>
+    <div
+      id="alertsContainer"
+      [ngStyle]="{ border: alertTypes[alertType].color + ' solid 2px' }"
+    >
+      <div>
+        <h1>{{ title }}</h1>
+      </div>
+      <div>
+        <ng-container *ngFor="let paragraph of text"
+          ><p>{{ paragraph }}</p></ng-container
+        >
+      </div>
+    </div>
+    <div id="alertsButtons">
+      <button *ngIf="alertTypes[alertType].ok" (click)="hideAlerts()">Ok</button
+      ><button
+        *ngIf="alertTypes[alertType].cancel"
+        (click)="cancelEmitter.emit()"
+      >
+        Cancelar</button
+      ><button
+        *ngIf="alertTypes[alertType].confirm"
+        (click)="confirmEmitter.emit()"
+      >
+        Continuar
+      </button>
+    </div>
+  </app-modal>
+</div>
