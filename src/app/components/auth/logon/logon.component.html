@@ -15,16 +15,16 @@
                 [(ngModel)]="createSignerUserData.name"
                 (blur)="
                   logonService.validateNames(
-                    formErrors,
+                    form1Errors,
                     logonName.value,
                     'name'
                   )
                 "
               />
-              <label class="longonLabel" for="logonName">Nome </label>
-              <ng-container *ngIf="formErrors['name'].active">
+              <label class="longonLabel" for="logonName">Nome</label>
+              <ng-container *ngIf="form1Errors['name'].active">
                 <app-form-error
-                  [errorText]="formErrors['name'].errorText"
+                  [errorText]="form1Errors['name'].errorText"
                 ></app-form-error>
               </ng-container>
             </div>
@@ -38,16 +38,16 @@
                 [(ngModel)]="createSignerUserData.surname"
                 (blur)="
                   logonService.validateNames(
-                    formErrors,
+                    form1Errors,
                     logonSurname.value,
                     'surname'
                   )
                 "
               />
               <label class="longonLabel" for="logonSurname">Sobrenome </label>
-              <ng-container *ngIf="formErrors['surname'].active">
+              <ng-container *ngIf="form1Errors['surname'].active">
                 <app-form-error
-                  [errorText]="formErrors['surname'].errorText"
+                  [errorText]="form1Errors['surname'].errorText"
                 ></app-form-error>
               </ng-container>
             </div>
@@ -62,12 +62,12 @@
                 #cpf
                 [(ngModel)]="createSignerUserData.cpf"
                 (input)="maskCpf()"
-                (blur)="logonService.validateCpf(formErrors, cpf.value, 'cpf')"
+                (blur)="logonService.validateCpf(form1Errors, cpf.value, 'cpf')"
               />
               <label class="longonLabel">CPF </label>
-              <ng-container *ngIf="formErrors['cpf'].active">
+              <ng-container *ngIf="form1Errors['cpf'].active">
                 <app-form-error
-                  [errorText]="formErrors['cpf'].errorText"
+                  [errorText]="form1Errors['cpf'].errorText"
                 ></app-form-error>
               </ng-container>
             </div>
@@ -82,16 +82,16 @@
                 (input)="maskPhone()"
                 (blur)="
                   logonService.validateCellPhone(
-                    formErrors,
+                    form1Errors,
                     cellphone.value,
                     'cellphone'
                   )
                 "
               />
               <label class="longonLabel">Telefone </label>
-              <ng-container *ngIf="formErrors['cellphone'].active">
+              <ng-container *ngIf="form1Errors['cellphone'].active">
                 <app-form-error
-                  [errorText]="formErrors['cellphone'].errorText"
+                  [errorText]="form1Errors['cellphone'].errorText"
                 ></app-form-error>
               </ng-container>
             </div>
@@ -106,13 +106,13 @@
                 [(ngModel)]="createSignerUserData.email"
                 name="email"
                 (blur)="
-                  logonService.validateEmail(formErrors, email.value, 'email')
+                  logonService.validateEmail(form1Errors, email.value, 'email')
                 "
               />
               <label class="longonLabel">Email </label>
-              <ng-container *ngIf="formErrors['email'].active">
+              <ng-container *ngIf="form1Errors['email'].active">
                 <app-form-error
-                  [errorText]="formErrors['email'].errorText"
+                  [errorText]="form1Errors['email'].errorText"
                 ></app-form-error>
               </ng-container>
             </div>
@@ -126,7 +126,7 @@
                 [(ngModel)]="confirmEmail"
                 (blur)="
                   logonService.validateIsEqual(
-                    formErrors,
+                    form1Errors,
                     email.value,
                     confirmEmailInput.value,
                     'emailConfirm'
@@ -134,9 +134,9 @@
                 "
               />
               <label class="longonLabel">Confirmar Email </label>
-              <ng-container *ngIf="formErrors['emailConfirm'].active">
+              <ng-container *ngIf="form1Errors['emailConfirm'].active">
                 <app-form-error
-                  [errorText]="formErrors['emailConfirm'].errorText"
+                  [errorText]="form1Errors['emailConfirm'].errorText"
                 ></app-form-error>
               </ng-container>
             </div>
@@ -152,26 +152,24 @@
                 [(ngModel)]="createSignerUserData.password"
                 (blur)="
                   logonService.validatePassword(
-                    formErrors,
+                    form1Errors,
                     password.value,
                     'password'
                   )
                 "
-                (mouseover)="seePasswordIcon.classList.remove('hidden')"
-                (mouseleave)="seePasswordIcon.classList.add('hidden')"
               />
               <label class="longonLabel">Senha </label>
               <img
                 id="seePasswordIcon"
-                class="hidden"
                 #seePasswordIcon
                 src="assets/icons/seeIcon.svg"
                 alt="Icone de um olho"
                 title="Mostrar senha"
+                (click)="logonUtils.changeInputType(password)"
               />
-              <ng-container *ngIf="formErrors['password'].active">
+              <ng-container *ngIf="form1Errors['password'].active">
                 <app-form-error
-                  [errorText]="formErrors['password'].errorText"
+                  [errorText]="form1Errors['password'].errorText"
                 ></app-form-error>
               </ng-container>
             </div>
@@ -185,7 +183,7 @@
                 [(ngModel)]="confirmPassword"
                 (blur)="
                   logonService.validateIsEqual(
-                    formErrors,
+                    form1Errors,
                     password.value,
                     confirmPasswordInput.value,
                     'passwordConfirm'
@@ -194,9 +192,9 @@
               />
               <label class="longonLabel">Confirmar senha</label>
 
-              <ng-container *ngIf="formErrors['passwordConfirm'].active">
+              <ng-container *ngIf="form1Errors['passwordConfirm'].active">
                 <app-form-error
-                  [errorText]="formErrors['passwordConfirm'].errorText"
+                  [errorText]="form1Errors['passwordConfirm'].errorText"
                 ></app-form-error>
               </ng-container>
             </div>
@@ -213,22 +211,45 @@
       <ng-container *ngIf="step === 2">
         <form id="logonForm">
           <div class="logonFormLine">
-            <div class="logonFormField">
+            <div class="logonFormField bigField">
               <input
                 type="text"
                 name="logonCompanyName"
                 class="logonInput largeInput"
                 placeholder=""
+                #logonCompanyName
+                [(ngModel)]="createSignerUserData.companyPerson.name"
+                (blur)="
+                  logonService.validateCompanyName(
+                    form2Errors,
+                    logonCompanyName.value,
+                    'name'
+                  )
+                "
               />
               <label class="longonLabel" for="logonCompanyName"
                 >Nome da empresa
               </label>
+              <ng-container *ngIf="form2Errors['name'].active">
+                <app-form-error
+                  [errorText]="form2Errors['name'].errorText"
+                ></app-form-error>
+              </ng-container>
             </div>
             <div class="logonFormField">
               <select
                 name="personType"
                 id="personType"
                 class="logonSelect mediumField"
+                #personType
+                [(ngModel)]="createSignerUserData.companyPerson.personType"
+                (blur)="
+                  logonService.validatePersonType(
+                    form2Errors,
+                    personType.value,
+                    'personType'
+                  )
+                "
               >
                 <option value="j">Jurídica</option>
                 <option value="f">Física</option>
@@ -242,11 +263,7 @@
             <button type="button" (click)="step = 1" class="logonButton">
               Voltar
             </button>
-            <button
-              type="button"
-              (click)="termsSign = true"
-              class="logonButton"
-            >
+            <button type="button" (click)="gotoStep3()" class="logonButton">
               Cadastrar-se
             </button>
           </div>

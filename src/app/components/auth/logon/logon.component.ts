@@ -6,12 +6,13 @@ import { LoaderService } from '../../shared/loader/loader.service';
 import { CpfMaskPipe } from '../../../pipes/cpf-mask.pipe';
 import { FormsModule } from '@angular/forms';
 import { Masks } from '../../shared/utils/masks';
-import { Validates } from '../../shared/utils/validates';
 import { CreateSignerUserDto } from './types';
 import { IFormErrors } from '../../shared/form-error/types';
 import { FormErrorComponent } from '../../shared/form-error/form-error.component';
 import { LogonService } from './logon.service';
 import { AlertsService } from '../../shared/alerts/alerts.service';
+import { HttpClientModule } from '@angular/common/http';
+import { LogonUtils } from './logon.utils';
 
 @Component({
   selector: 'app-logon',
@@ -23,31 +24,19 @@ import { AlertsService } from '../../shared/alerts/alerts.service';
     CpfMaskPipe,
     FormsModule,
     FormErrorComponent,
+    HttpClientModule,
   ],
+  providers: [LogonService, LogonUtils],
   templateUrl: './logon.component.html',
   styleUrl: './logon.component.css',
 })
 export class LogonComponent {
   @ViewChild('logonName') logonName!: ElementRef;
 
-  createSignerUserData: CreateSignerUserDto = {
-    cellphone: '',
-    name: '',
-    surname: '',
-    email: '',
-    password: '',
-    cpf: '',
-    phone: '',
-    companyPerson: {
-      name: '',
-      personType: 'j',
-    },
-    personType: 'f',
-    occupationsPermissions: [],
-    signedTermsIds: [],
-  };
+  createSignerUserData: CreateSignerUserDto =
+    this.logonUtils.newCreateUserDto();
 
-  formErrors: IFormErrors = {
+  form1Errors: IFormErrors = {
     name: {
       errorText: ['O nome deve possuir pelo menos 3 caracteres'],
       active: false,
@@ -83,25 +72,63 @@ export class LogonComponent {
       active: false,
     },
   };
+
+  form2Errors: IFormErrors = {
+    name: {
+      errorText: ['O nome deve possuir pelo menos 3 caracteres'],
+      active: false,
+    },
+    personType: {
+      errorText: ['Tipo inválido'],
+      active: false,
+    },
+  };
+
   confirmEmail: string = '';
   confirmPassword: string = '';
 
-  step = 2;
+  step = 1;
   termsSign = false;
 
   constructor(
     private loaderService: LoaderService,
     public logonService: LogonService,
-    private alertsService: AlertsService
+    private alertsService: AlertsService,
+    public logonUtils: LogonUtils
   ) {}
 
   subscribe(signedTerms: ITermSign[]) {
     this.loaderService.showLoader();
-    this.createSignerUserData.cpf = '12';
     this.termsSign = false;
+
+    const terms = signedTerms.map((term) => term.termId);
+    this.createSignerUserData.signedTermsIds = terms;
+
+    this.createSignerUserData.cpf = this.createSignerUserData.cpf.replace(
+      /\D/g,
+      ''
+    );
+
+    this.logonService.createSignerUser(this.createSignerUserData).subscribe({
+      next: (res) => {
+        this.alertsService.showAlerts('success', 'Usuário criado com sucesso', [
+          'Usuário criado com sucesso',
+        ]);
+        this.createSignerUserData = this.logonUtils.newCreateUserDto();
+        this.step = 1;
+        this.loaderService.hideLoader();
+      },
+      error: (err) => {
+        this.alertsService.showAlerts('error', 'Erro ao criar o usuário', [
+          err.message,
+        ]);
+        this.loaderService.hideLoader();
+      },
+    });
   }
 
   goToStep2() {
+    this.loaderService.showLoader();
     const errorMensage = this.logonService.validateForm1(
       this.createSignerUserData,
       this.confirmEmail,
@@ -114,9 +141,32 @@ export class LogonComponent {
         'Dados inconsistentes',
         errorMensage
       );
+      this.loaderService.hideLoader();
       return;
     }
     this.step = 2;
+
+    this.loaderService.hideLoader();
+  }
+
+  gotoStep3() {
+    this.loaderService.showLoader();
+    const errorMensage = this.logonService.validateForm2(
+      this.createSignerUserData
+    );
+
+    if (errorMensage.length > 0) {
+      this.alertsService.showAlerts(
+        'error',
+        'Dados inconsistentes',
+        errorMensage
+      );
+      this.loaderService.hideLoader();
+      return;
+    }
+
+    this.termsSign = true;
+    this.loaderService.hideLoader();
   }
 
   //------------------Masks------------------------------------------------------
