@@ -10,7 +10,12 @@ export class Validates {
 
   public static validateNames(name: string) {
     const nameRegex =
-      /^[a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]{3,16}(?:\s[a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]{3,16}){0,4}$/;
+      /^[a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]{1,16}(?:\s[a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ]{1,16}){0,4}$/;
+    return nameRegex.test(name);
+  }
+
+  public static validateComanyNames(name: string) {
+    const nameRegex = /^[a-zA-ZáàâãéèêíïóôõöúüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÜÇÑ0-9& ]*$/;
     return nameRegex.test(name);
   }
 
@@ -20,11 +25,9 @@ export class Validates {
     const cpfRegex = /^\d{11}$/;
     // Verifica se a senha é válido
     if (!cpfRegex.test(cpf)) {
-      console.log(cpf);
       return false;
     }
     if (/^(\d)\1+$/.test(cpf)) {
-      console.log(2);
       return false;
     }
 
@@ -53,7 +56,6 @@ export class Validates {
       digit1 !== parseInt(cpf.charAt(9)) ||
       digit2 !== parseInt(cpf.charAt(10))
     ) {
-      console.log(4);
       return false;
     }
 
@@ -80,5 +82,9 @@ export class Validates {
       /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
 
     return passwordRegex.test(password);
+  }
+
+  public static validatePersonType(personType: string) {
+    return personType === 'f' || personType === 'j';
   }
 }
