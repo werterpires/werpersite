@@ -14,8 +14,7 @@ export class TermsSignService {
       .get<ITerm[]>('http://localhost:3000/terms/role/' + roleId)
       .pipe(
         catchError((error) => {
-          console.log('Aqui está o erro: ', error);
-          return throwError(() => new Error(error));
+          return throwError(() => new Error(error.error.message));
         })
       );
   }

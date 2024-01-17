@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgFor, NgForOf, NgIf } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { AlertsService } from '../../shared/alerts/alerts.service';
+import { LoaderService } from '../../shared/loader/loader.service';
 
 @Component({
   selector: 'app-terms-sign',
@@ -25,7 +27,9 @@ import { FormsModule } from '@angular/forms';
 export class TermsSignComponent implements OnInit {
   constructor(
     private readonly termsSignService: TermsSignService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private alertsService: AlertsService,
+    private loaderService: LoaderService
   ) {}
 
   @Input() roleId!: number;
@@ -38,6 +42,7 @@ export class TermsSignComponent implements OnInit {
     this.getAllRoleTerms();
   }
   async getAllRoleTerms() {
+    this.loaderService.showLoader();
     this.termsSignService.findAllTermsByRoleId(this.roleId).subscribe({
       next: async (res) => {
         this.allroleTerms = res;
@@ -45,6 +50,14 @@ export class TermsSignComponent implements OnInit {
         this.allroleTerms.forEach((term) => {
           this.signTerms.push({ termId: term.termId, accept: false });
         });
+
+        this.loaderService.hideLoader();
+      },
+      error: (err) => {
+        this.alertsService.showAlerts('error', 'Erro ao criar o usuário', [
+          err.message,
+        ]);
+        this.loaderService.hideLoader();
       },
     });
   }
