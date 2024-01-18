@@ -1,0 +1,49 @@
+<div id="logonContainer">
+  <div id="logonSquare">
+    <img src="assets/img/logo.png" id="logonLogo" alt="Logo do app" />
+    <div id="logonForms">
+      <form id="logonForm">
+        <div class="logonFormLine">
+          <div class="logonFormField">
+            <input type="email" class="logonInput bigField" placeholder="" />
+            <label class="longonLabel">Email </label>
+            <ng-container>
+              <app-form-error></app-form-error>
+            </ng-container>
+          </div>
+          <div class="logonFormField bigField">
+            <input
+              type="password"
+              class="logonInput bigField"
+              placeholder=""
+              name="password"
+            />
+            <label class="longonLabel">Senha </label>
+            <img
+              id="seePasswordIcon"
+              #seePasswordIcon
+              src="assets/icons/seeIcon.svg"
+              alt="Icone de um olho"
+              title="Mostrar senha"
+            />
+            <ng-container>
+              <app-form-error></app-form-error>
+            </ng-container>
+          </div>
+        </div>
+        <div class="logonFormField">
+          <div class="logonFormLine">
+            <button type="button" class="logonButton">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <ng-container *ngIf="termsSign">
+  <app-terms-sign
+    [roleId]="2"
+    (cancelEmitter)="termsSign = false"
+    (continueEmmitter)="subscribe($event)"
+  ></app-terms-sign>
+</ng-container> -->
