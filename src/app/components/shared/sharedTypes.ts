@@ -31,3 +31,25 @@ export interface IPerson {
   phone: string | null;
   cellphone: string | null;
 }
+
+export interface IUserFromJwt {
+  userId: number;
+  name: string;
+  active: boolean;
+  companies: number[];
+  roles: ERoles[];
+  subscription: number;
+  ocupationsPermissions: IOccupationPermission[];
+}
+
+export interface IOccupationPermission {
+  occupationId: number;
+  permissionId: number;
+}
+
+export enum ERoles {
+  SUPERADMIN = 'superadmin',
+  SUBSCRIBER = 'subscriber',
+  MANAGER = 'manager',
+  AGENT = 'agent',
+}

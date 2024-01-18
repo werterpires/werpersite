@@ -12,6 +12,8 @@ import { LoaderService } from '../../shared/loader/loader.service';
 import { AlertsService } from '../../shared/alerts/alerts.service';
 import { LoginService } from './login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../../shared/sharedServices/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -44,7 +46,9 @@ export class LoginComponent {
     public loginUtils: LoginUtils,
     private loaderService: LoaderService,
     private alertsService: AlertsService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   login() {
@@ -63,12 +67,16 @@ export class LoginComponent {
 
     this.loginService.login(this.loginData).subscribe({
       next: (data) => {
-        localStorage.setItem('accessToken', data.accessToken);
-
+        this.authService.getUserFromJwt(data.accessToken);
+        this.router.navigate(['/']);
+        this.loaderService.hideLoader();
+      },
+      error: (err) => {
+        this.alertsService.showAlerts('error', 'Erro ao fazer o login', [
+          err.message,
+        ]);
         this.loaderService.hideLoader();
       },
     });
-
-    this.loaderService.hideLoader();
   }
 }

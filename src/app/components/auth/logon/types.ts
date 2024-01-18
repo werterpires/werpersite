@@ -1,4 +1,5 @@
 import { CreatePersonDto } from '../../shared/people/types';
+import { IOccupationPermission } from '../../shared/sharedTypes';
 
 export interface CreateSignerUserDto {
   name: string;
@@ -12,9 +13,4 @@ export interface CreateSignerUserDto {
   phone?: string;
   occupationsPermissions: IOccupationPermission[];
   signedTermsIds: number[];
-}
-
-export interface IOccupationPermission {
-  occupationId: number;
-  permissionId: number;
 }
