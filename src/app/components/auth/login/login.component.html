@@ -5,10 +5,22 @@
       <form id="logonForm">
         <div class="logonFormLine">
           <div class="logonFormField">
-            <input type="email" class="logonInput bigField" placeholder="" />
+            <input
+              type="email"
+              class="logonInput bigField"
+              name="email"
+              #email
+              [(ngModel)]="loginData.email"
+              placeholder=""
+              (blur)="
+                formErrorService.validateEmail(formErrors, email.value, 'email')
+              "
+            />
             <label class="longonLabel">Email </label>
-            <ng-container>
-              <app-form-error></app-form-error>
+
+            <ng-container *ngIf="formErrors['email'].active">
+              <app-form-error [errorText]="formErrors['email'].errorText">
+              </app-form-error>
             </ng-container>
           </div>
           <div class="logonFormField bigField">
@@ -17,6 +29,15 @@
               class="logonInput bigField"
               placeholder=""
               name="password"
+              #password
+              [(ngModel)]="loginData.password"
+              (blur)="
+                formErrorService.validatePassword(
+                  formErrors,
+                  password.value,
+                  'password'
+                )
+              "
             />
             <label class="longonLabel">Senha </label>
             <img
@@ -25,15 +46,19 @@
               src="assets/icons/seeIcon.svg"
               alt="Icone de um olho"
               title="Mostrar senha"
+              (click)="formsUtils.changeInputType(password)"
             />
-            <ng-container>
-              <app-form-error></app-form-error>
+            <ng-container *ngIf="formErrors['password'].active">
+              <app-form-error [errorText]="formErrors['password'].errorText">
+              </app-form-error>
             </ng-container>
           </div>
         </div>
         <div class="logonFormField">
           <div class="logonFormLine">
-            <button type="button" class="logonButton">Login</button>
+            <button type="button" class="logonButton" (click)="login()">
+              Login
+            </button>
           </div>
         </div>
       </form>
