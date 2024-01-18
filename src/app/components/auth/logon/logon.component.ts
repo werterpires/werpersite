@@ -13,6 +13,8 @@ import { LogonService } from './logon.service';
 import { AlertsService } from '../../shared/alerts/alerts.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LogonUtils } from './logon.utils';
+import { FormErrorService } from '../../shared/form-error/form-error.service';
+import { FormsUtils } from '../../shared/utils/formsUtils';
 
 @Component({
   selector: 'app-logon',
@@ -94,7 +96,9 @@ export class LogonComponent {
     private loaderService: LoaderService,
     public logonService: LogonService,
     private alertsService: AlertsService,
-    public logonUtils: LogonUtils
+    public logonUtils: LogonUtils,
+    public formErrorService: FormErrorService,
+    public formsUtils: FormsUtils
   ) {}
 
   subscribe(signedTerms: ITermSign[]) {
@@ -129,7 +133,7 @@ export class LogonComponent {
 
   goToStep2() {
     this.loaderService.showLoader();
-    const errorMensage = this.logonService.validateForm1(
+    const errorMensage = this.logonUtils.validateForm1(
       this.createSignerUserData,
       this.confirmEmail,
       this.confirmPassword
@@ -151,7 +155,7 @@ export class LogonComponent {
 
   gotoStep3() {
     this.loaderService.showLoader();
-    const errorMensage = this.logonService.validateForm2(
+    const errorMensage = this.logonUtils.validateForm2(
       this.createSignerUserData
     );
 

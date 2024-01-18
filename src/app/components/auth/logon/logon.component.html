@@ -14,7 +14,7 @@
                 #logonName
                 [(ngModel)]="createSignerUserData.name"
                 (blur)="
-                  logonService.validateNames(
+                  formErrorService.validateNames(
                     form1Errors,
                     logonName.value,
                     'name'
@@ -37,7 +37,7 @@
                 #logonSurname
                 [(ngModel)]="createSignerUserData.surname"
                 (blur)="
-                  logonService.validateNames(
+                  formErrorService.validateNames(
                     form1Errors,
                     logonSurname.value,
                     'surname'
@@ -62,7 +62,9 @@
                 #cpf
                 [(ngModel)]="createSignerUserData.cpf"
                 (input)="maskCpf()"
-                (blur)="logonService.validateCpf(form1Errors, cpf.value, 'cpf')"
+                (blur)="
+                  formErrorService.validateCpf(form1Errors, cpf.value, 'cpf')
+                "
               />
               <label class="longonLabel">CPF </label>
               <ng-container *ngIf="form1Errors['cpf'].active">
@@ -81,7 +83,7 @@
                 [(ngModel)]="createSignerUserData.cellphone"
                 (input)="maskPhone()"
                 (blur)="
-                  logonService.validateCellPhone(
+                  formErrorService.validateCellPhone(
                     form1Errors,
                     cellphone.value,
                     'cellphone'
@@ -106,7 +108,11 @@
                 [(ngModel)]="createSignerUserData.email"
                 name="email"
                 (blur)="
-                  logonService.validateEmail(form1Errors, email.value, 'email')
+                  formErrorService.validateEmail(
+                    form1Errors,
+                    email.value,
+                    'email'
+                  )
                 "
               />
               <label class="longonLabel">Email </label>
@@ -125,7 +131,7 @@
                 #confirmEmailInput
                 [(ngModel)]="confirmEmail"
                 (blur)="
-                  logonService.validateIsEqual(
+                  formErrorService.validateIsEqual(
                     form1Errors,
                     email.value,
                     confirmEmailInput.value,
@@ -151,7 +157,7 @@
                 #password
                 [(ngModel)]="createSignerUserData.password"
                 (blur)="
-                  logonService.validatePassword(
+                  formErrorService.validatePassword(
                     form1Errors,
                     password.value,
                     'password'
@@ -165,7 +171,7 @@
                 src="assets/icons/seeIcon.svg"
                 alt="Icone de um olho"
                 title="Mostrar senha"
-                (click)="logonUtils.changeInputType(password)"
+                (click)="formsUtils.changeInputType(password)"
               />
               <ng-container *ngIf="form1Errors['password'].active">
                 <app-form-error
@@ -182,7 +188,7 @@
                 #confirmPasswordInput
                 [(ngModel)]="confirmPassword"
                 (blur)="
-                  logonService.validateIsEqual(
+                  formErrorService.validateIsEqual(
                     form1Errors,
                     password.value,
                     confirmPasswordInput.value,
@@ -220,7 +226,7 @@
                 #logonCompanyName
                 [(ngModel)]="createSignerUserData.companyPerson.name"
                 (blur)="
-                  logonService.validateCompanyName(
+                  formErrorService.validateCompanyName(
                     form2Errors,
                     logonCompanyName.value,
                     'name'
@@ -244,7 +250,7 @@
                 #personType
                 [(ngModel)]="createSignerUserData.companyPerson.personType"
                 (blur)="
-                  logonService.validatePersonType(
+                  formErrorService.validatePersonType(
                     form2Errors,
                     personType.value,
                     'personType'
