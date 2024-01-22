@@ -51,6 +51,15 @@ ul {
   color: #ffffff;
 }
 
+#userInfo {
+  padding: 0 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  font-family: var(--fontMont);
+  color: var(--orange);
+}
+
 #content {
   margin: 0 auto;
   height: 73vh;

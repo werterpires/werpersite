@@ -1,6 +1,6 @@
 #operationalContainer {
   width: calc(85vw - 20px);
-  height: 71vh;
+  height: 84vh;
   background-color: var(--softOrange);
   padding: 20px;
   overflow-y: auto;
