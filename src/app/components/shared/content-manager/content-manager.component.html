@@ -1,10 +1,6 @@
-<app-container>
+<app-container [user]="user">
   <div id="contentContainer">
-    <app-side-bar
-      [menuItens]="menuItens"
-      (choiceEmitter)="choiceComponent($event)"
-    >
-    </app-side-bar>
+    <app-side-bar [menuItens]="menuItens"> </app-side-bar>
     <app-operational-container>
       <ng-content> </ng-content>
     </app-operational-container>

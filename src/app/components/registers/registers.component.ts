@@ -37,11 +37,4 @@ export class RegistersComponent {
   components: Components = {
     termsTypes: false,
   };
-
-  choiceComponent(component: string) {
-    Object.keys(this.components).forEach((key) => {
-      this.components[key] = false;
-    });
-    this.components[component] = true;
-  }
 }

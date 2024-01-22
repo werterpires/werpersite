@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SideBarComponent } from '../side-bar/side-bar.component';
 import { AuthService } from '../sharedServices/auth.service';
 import { IUserFromJwt } from '../sharedTypes';
@@ -10,15 +10,8 @@ import { IUserFromJwt } from '../sharedTypes';
   templateUrl: './container.component.html',
   styleUrl: './container.component.css',
 })
-export class ContainerComponent implements OnInit {
+export class ContainerComponent {
   constructor(private authService: AuthService) {}
 
-  user: IUserFromJwt | null = null;
-
-  ngOnInit(): void {
-    const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
-      this.user = JSON.parse(atob(accessToken.split('.')[1])) as IUserFromJwt;
-    }
-  }
+  @Input() user: IUserFromJwt | null = null;
 }
