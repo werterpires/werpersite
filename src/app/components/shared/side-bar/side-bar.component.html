@@ -1,13 +1,19 @@
 <aside id="sideBar">
   <nav>
     <ul>
-      <li
-        *ngFor="let menuItem of menuItens"
-        class="sideMenuItem"
-        (click)="choiceEmitter.emit(menuItem.path)"
-      >
-        <img class="sideMenuIcon" [src]="menuItem.icon" [alt]="menuItem.alt" />
-        <span class="sideMenuText">{{ menuItem.text }}</span>
+      <li *ngFor="let menuItem of menuItens" class="sideMenuItem">
+        <a
+          [routerLink]="menuItem.path"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+        >
+          <img
+            class="sideMenuIcon"
+            [src]="menuItem.icon"
+            [alt]="menuItem.alt"
+          />
+          <span class="sideMenuText">{{ menuItem.text }}</span>
+        </a>
       </li>
     </ul>
   </nav>

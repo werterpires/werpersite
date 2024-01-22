@@ -4,6 +4,7 @@ import { SideBarComponent } from '../side-bar/side-bar.component';
 import { MenuItem } from '../side-bar/types';
 import { Components } from './types';
 import { OperationalContainerComponent } from '../operational-container/operational-container.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-content-manager',
@@ -12,6 +13,7 @@ import { OperationalContainerComponent } from '../operational-container/operatio
     ContainerComponent,
     SideBarComponent,
     OperationalContainerComponent,
+    RouterOutlet,
   ],
   templateUrl: './content-manager.component.html',
   styleUrl: './content-manager.component.css',

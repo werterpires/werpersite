@@ -68,7 +68,7 @@ export class LoginComponent {
     this.loginService.login(this.loginData).subscribe({
       next: (data) => {
         this.authService.getUserFromJwt(data.accessToken);
-        this.router.navigate(['/']);
+        this.router.navigate(['/cadastros']);
         this.loaderService.hideLoader();
       },
       error: (err) => {

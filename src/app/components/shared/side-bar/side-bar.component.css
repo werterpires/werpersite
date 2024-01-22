@@ -10,11 +10,16 @@
 .sideMenuItem {
   padding: 5px 5px;
   border-radius: 5px;
-  display: flex;
-  align-items: center;
+
   list-style: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+}
+
+.sideMenuItem a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .sideMenuItem:hover {

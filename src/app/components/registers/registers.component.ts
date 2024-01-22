@@ -7,6 +7,7 @@ import { NgIf } from '@angular/common';
 import { OperationalContainerComponent } from '../shared/operational-container/operational-container.component';
 import { Components } from '../shared/content-manager/types';
 import { ContentManagerComponent } from '../shared/content-manager/content-manager.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-registers',
@@ -18,6 +19,7 @@ import { ContentManagerComponent } from '../shared/content-manager/content-manag
     TermsTypesComponent,
     OperationalContainerComponent,
     ContentManagerComponent,
+    RouterOutlet,
   ],
   templateUrl: './registers.component.html',
   styleUrl: './registers.component.css',
@@ -27,7 +29,7 @@ export class RegistersComponent {
     {
       alt: 'Icone de um papel com setas em várias direções',
       icon: 'assets/icons/termTypeIcon.svg',
-      path: 'termsTypes',
+      path: 'tipos-termos',
       text: 'Tipos de termos',
     },
   ];
