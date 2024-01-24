@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContainerComponent } from '../shared/container/container.component';
 import { SideBarComponent } from '../shared/side-bar/side-bar.component';
 import { MenuItem } from '../shared/side-bar/types';
@@ -31,10 +31,14 @@ export class RegistersComponent {
       icon: 'assets/icons/termTypeIcon.svg',
       path: 'tipos-termos',
       text: 'Tipos de termos',
+      role: 'superadmin',
+    },
+    {
+      alt: 'Ícone de uma caneta assinando um papel',
+      icon: 'assets/icons/subscriptionIcon.svg',
+      path: 'assinaturas',
+      text: 'Assinaturas',
+      role: 'subscriber',
     },
   ];
-
-  components: Components = {
-    termsTypes: false,
-  };
 }

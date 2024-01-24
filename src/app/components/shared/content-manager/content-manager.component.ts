@@ -6,6 +6,7 @@ import { Components } from './types';
 import { OperationalContainerComponent } from '../operational-container/operational-container.component';
 import { RouterOutlet } from '@angular/router';
 import { IUserFromJwt } from '../sharedTypes';
+import { AuthService } from '../sharedServices/auth.service';
 
 @Component({
   selector: 'app-content-manager',
@@ -20,6 +21,14 @@ import { IUserFromJwt } from '../sharedTypes';
   styleUrl: './content-manager.component.css',
 })
 export class ContentManagerComponent implements OnInit {
+  constructor(private authService: AuthService) {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      this.user = JSON.parse(atob(accessToken.split('.')[1])) as IUserFromJwt;
+    }
+    this.authService.setUser(this.user);
+  }
+
   @Input() menuItens: MenuItem[] = [];
   @Input() components!: Components;
 
@@ -27,10 +36,5 @@ export class ContentManagerComponent implements OnInit {
 
   user: IUserFromJwt | null = null;
 
-  ngOnInit(): void {
-    const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
-      this.user = JSON.parse(atob(accessToken.split('.')[1])) as IUserFromJwt;
-    }
-  }
+  ngOnInit(): void {}
 }

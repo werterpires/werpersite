@@ -3,4 +3,5 @@ export interface MenuItem {
   text: string;
   path: string;
   alt: string;
+  role: string;
 }

@@ -4,6 +4,7 @@ import { RegistersComponent } from './components/registers/registers.component';
 import { LogonComponent } from './components/auth/logon/logon.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { TermsTypesComponent } from './components/registers/terms-types/terms-types.component';
+import { SubscriptionsComponent } from './components/registers/subscriptions/subscriptions.component';
 
 export const routes: Routes = [
   { path: 'logon', component: LogonComponent },
@@ -11,7 +12,10 @@ export const routes: Routes = [
   {
     path: 'cadastros',
     component: RegistersComponent,
-    children: [{ path: 'tipos-termos', component: TermsTypesComponent }],
+    children: [
+      { path: 'tipos-termos', component: TermsTypesComponent },
+      { path: 'assinaturas', component: SubscriptionsComponent },
+    ],
   },
   { path: '', component: LoginComponent },
 ];

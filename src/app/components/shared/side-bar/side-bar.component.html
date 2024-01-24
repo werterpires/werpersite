@@ -1,20 +1,25 @@
 <aside id="sideBar">
   <nav>
     <ul>
-      <li *ngFor="let menuItem of menuItens" class="sideMenuItem">
-        <a
-          [routerLink]="menuItem.path"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
+      <ng-container *ngFor="let menuItem of menuItens">
+        <li
+          *ngIf="user && user.roles.includes(menuItem.role)"
+          class="sideMenuItem"
         >
-          <img
-            class="sideMenuIcon"
-            [src]="menuItem.icon"
-            [alt]="menuItem.alt"
-          />
-          <span class="sideMenuText">{{ menuItem.text }}</span>
-        </a>
-      </li>
+          <a
+            [routerLink]="menuItem.path"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            <img
+              class="sideMenuIcon"
+              [src]="menuItem.icon"
+              [alt]="menuItem.alt"
+            />
+            <span class="sideMenuText">{{ menuItem.text }}</span>
+          </a>
+        </li>
+      </ng-container>
     </ul>
   </nav>
 </aside>

@@ -37,7 +37,7 @@ export interface IUserFromJwt {
   name: string;
   active: boolean;
   companies: number[];
-  roles: ERoles[];
+  roles: string[];
   subscription: number;
   ocupationsPermissions: IOccupationPermission[];
 }
@@ -45,11 +45,4 @@ export interface IUserFromJwt {
 export interface IOccupationPermission {
   occupationId: number;
   permissionId: number;
-}
-
-export enum ERoles {
-  SUPERADMIN = 'superadmin',
-  SUBSCRIBER = 'subscriber',
-  MANAGER = 'manager',
-  AGENT = 'agent',
 }
