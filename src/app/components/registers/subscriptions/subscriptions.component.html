@@ -1,1 +1,23 @@
-<p>subscriptions works!</p>
+<app-grid-header [headers]="headers"></app-grid-header>
+<div class="gridItens">
+  <ng-container
+    *ngFor="let subscription of allUserSubscriptions; let i = index"
+  >
+    <app-update-form>
+      <input
+        class="mediumField"
+        type="text"
+        name="subscription"
+        [(ngModel)]="subscription.subscriptionTitle"
+      />
+
+      <input
+        class="tinyField"
+        type="checkbox"
+        name="subscriptionActive"
+        [(ngModel)]="subscription.subscriptionActive"
+      />
+      <p class="smallField">{{ subscription.validate | date }}</p>
+    </app-update-form>
+  </ng-container>
+</div>
