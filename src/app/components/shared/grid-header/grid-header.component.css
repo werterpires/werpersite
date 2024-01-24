@@ -1,0 +1,40 @@
+.gridHeader {
+  padding-left: 30px;
+  display: flex;
+  gap: 10px;
+  background-color: var(--green);
+}
+
+.gridHeader * {
+  padding: 5px;
+  font-family: var(--fontAnek);
+  font-weight: bold;
+
+  color: white;
+
+  text-align: center;
+}
+
+.tinyHeader {
+  width: 100px;
+}
+
+.smallHeader {
+  width: 144px;
+}
+
+.mediumHeader {
+  width: 188px;
+}
+
+.bigHeader {
+  width: 232px;
+}
+
+.largeHeader {
+  width: 276px;
+}
+
+.hugeHeader {
+  width: 320px;
+}
