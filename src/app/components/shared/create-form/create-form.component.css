@@ -1,0 +1,31 @@
+.createLabel {
+  width: fit-content;
+
+  /* left: 10px;
+  bottom: 38px; */
+  padding: 0 4px;
+  border-radius: 5px;
+  translate: 10px 9px;
+
+  color: var(--darkGreen);
+  background-color: var(--softOrange);
+  transition: all 0.2s ease;
+  pointer-events: none;
+
+  font-family: var(--fontMont);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.createInput {
+  padding: 5px 3px 1px 15px;
+  background-color: transparent;
+  border: 2px solid var(--darkGreen);
+  color: var(--green);
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  font-family: var(--fontAnek);
+  outline: none;
+  transition: 0.5s ease all;
+}
