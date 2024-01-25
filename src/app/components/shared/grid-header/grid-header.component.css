@@ -15,6 +15,19 @@
   text-align: center;
 }
 
+#addIcon {
+  width: 35px;
+  transition: 0.1s ease-in-out all;
+}
+
+#addIcon:hover {
+  translate: -1px -1px;
+}
+
+#addIcon:active {
+  scale: 1.1;
+}
+
 .tinyHeader {
   width: 100px;
 }
