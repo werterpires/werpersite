@@ -4,3 +4,7 @@ export interface ISubscription {
   subscriptionActive: boolean;
   validate: string;
 }
+
+export interface CreateSubscriptionDto {
+  subscriptionTitle: string;
+}

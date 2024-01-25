@@ -1,4 +1,7 @@
-<app-grid-header [headers]="headers"></app-grid-header>
+<app-grid-header
+  [headers]="headers"
+  (addEmitter)="createForm = true"
+></app-grid-header>
 <div class="gridItens">
   <ng-container
     *ngFor="let subscription of allUserSubscriptions; let i = index"
@@ -21,3 +24,24 @@
     </app-update-form>
   </ng-container>
 </div>
+<ng-container *ngIf="createForm"
+  ><app-create-form
+    [createMessages]="[
+      'uma assinatura só poderá ser apagada um mês após a criação.',
+      'Confirmar a criação da assinatura?'
+    ]"
+    (cancelEmitter)="createForm = false"
+    (confirmEmitter)="createSubscription()"
+  >
+    <label class="createLabel" for="subscriptionTitle"
+      >Título da Subscrição:
+    </label>
+    <input
+      class="mediumField"
+      type="text"
+      class="createInput"
+      name="subscriptionTitle"
+      id="subscriptionTitle"
+      [(ngModel)]="createSubscriptionData.subscriptionTitle"
+  /></app-create-form>
+</ng-container>

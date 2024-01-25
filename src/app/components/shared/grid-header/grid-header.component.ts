@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IGridHeader } from './types';
 import { NgClass, NgFor } from '@angular/common';
 
@@ -11,4 +11,5 @@ import { NgClass, NgFor } from '@angular/common';
 })
 export class GridHeaderComponent {
   @Input() headers: IGridHeader[] = [];
+	@Output() addEmitter = new EventEmitter();
 }

@@ -2,5 +2,5 @@
   <p *ngFor="let header of headers" [ngClass]="header.size">
     {{ header.title }}
   </p>
-  <img id="addIcon" src="assets/icons/addIcon.svg" alt="" />
+  <img id="addIcon" src="assets/icons/addIcon.svg" alt="Círculo com um símbolo de mais e o número um" (click)="addEmitter.emit()"/>
 </div>

@@ -9,27 +9,39 @@ import { ISubscription } from './types';
 import { AlertsService } from '../../shared/alerts/alerts.service';
 import { GridHeaderComponent } from '../../shared/grid-header/grid-header.component';
 import { IGridHeader } from '../../shared/grid-header/types';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { UpdateFormComponent } from '../../shared/update-form/update-form.component';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '../../../pipes/date.pipe';
+import { CreateFormComponent } from '../../shared/create-form/create-form.component';
+import { CreateSubscriptionDto } from './types';
+import * as utils from './subscriptions.utils';
 
 @Component({
   selector: 'app-subscriptions',
   standalone: true,
   imports: [
+    NgIf,
     HttpClientModule,
     GridHeaderComponent,
     NgFor,
     UpdateFormComponent,
     FormsModule,
     DatePipe,
+    CreateFormComponent,
+    FormsModule,
   ],
   providers: [SubscriptionsService],
   templateUrl: './subscriptions.component.html',
   styleUrl: './subscriptions.component.css',
 })
 export class SubscriptionsComponent implements OnInit {
+  user: IUserFromJwt | null = null;
+  allUserSubscriptions: ISubscription[] = [];
+  createForm = false;
+  headers: IGridHeader[] = utils.headers;
+  createSubscriptionData: CreateSubscriptionDto = utils.createSubscriptionData;
+
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
@@ -37,22 +49,6 @@ export class SubscriptionsComponent implements OnInit {
     private readonly subscriptionsService: SubscriptionsService,
     private readonly alertsService: AlertsService
   ) {}
-  user: IUserFromJwt | null = null;
-  allUserSubscriptions: ISubscription[] = [];
-  headers: IGridHeader[] = [
-    {
-      title: 'Assinatura',
-      size: 'mediumHeader',
-    },
-    {
-      title: 'Ativa',
-      size: 'tinyHeader',
-    },
-    {
-      title: 'Validade',
-      size: 'smallHeader',
-    },
-  ];
 
   ngOnInit(): void {
     this.authService.users$.subscribe((user) => {
@@ -80,5 +76,24 @@ export class SubscriptionsComponent implements OnInit {
         this.loaderService.hideLoader();
       },
     });
+  }
+
+  createSubscription() {
+    this.loaderService.showLoader();
+    this.subscriptionsService
+      .createSubscription(this.createSubscriptionData)
+      .subscribe({
+        next: (res) => {
+          this.allUserSubscriptions.push(res);
+          this.createForm = false;
+          this.loaderService.hideLoader();
+        },
+        error: (err) => {
+          this.alertsService.showAlerts('error', 'Erro ao criar assinatura', [
+            err.message,
+          ]);
+          this.loaderService.hideLoader();
+        },
+      });
   }
 }

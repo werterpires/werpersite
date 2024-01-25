@@ -1,21 +1,14 @@
 <app-modal>
-	<form action="">
-		<label class="createLabel" for="subscriptionTitle">Título da Subscrição:  </label>
-		<input class="mediumField" type="text" class="createInput" name="subscriptionTitle" id="subscriptionTitle">
-		<div class="modalsButtons">
-      <button
-       
-        (click)="cancelEmitter.emit()"
-      >
-        Cancelar</button
-      ><button
-        
-        (click)="showDialog()"
-      >
-        Criar registro
-      </button>
-    </div>
-	</form>
-	<app-dialog (cancelEmitter)="hideDialog()" (confirmEmitter)="confirmEmitter.emit()"></app-dialog>
-</app-modal>
+  <form action="">
+    <ng-content></ng-content>
 
+    <div class="modalsButtons">
+      <button type="button" (click)="cancelEmitter.emit()">Cancelar</button
+      ><button type="button" (click)="showDialog()">Criar registro</button>
+    </div>
+  </form>
+  <app-dialog
+    (cancelEmitter)="hideDialog()"
+    (confirmEmitter)="confirmEmitter.emit()"
+  ></app-dialog>
+</app-modal>
