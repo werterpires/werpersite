@@ -24,6 +24,19 @@ html {
   background-color: var(--darkGreen);
 }
 
+p {
+  align-self: center;
+}
+
+textarea {
+  font-family: var(--fontAnek);
+  font-weight: 400;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 17px;
+}
+
 .hidden {
   display: none;
 }
@@ -42,7 +55,7 @@ html {
 
   cursor: default;
   transition: 0.2s ease-in-out all;
-  resize: vertical;
+  align-self: center;
 }
 
 .updateForm input:hover,
@@ -52,7 +65,7 @@ html {
   color: white;
 }
 
-.updateForm input:focus,
+.updateForm input[type="text"]:focus,
 .updateForm textarea:focus {
   background-color: var(--softHover);
   color: var(--darkGreen);
@@ -81,4 +94,12 @@ html {
 
 .hugeField {
   width: 320px;
+}
+
+.gridItens > div {
+  border-bottom: 1px solid var(--darkPlace);
+}
+
+.gridItens > div:last-child {
+  border: none;
 }
