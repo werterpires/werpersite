@@ -1,0 +1,30 @@
+<div *ngIf="showDialog">
+  <app-modal>
+    <div
+      id="dialogContainer"
+      [ngStyle]="{ border: dialogTypes[dialogType].color + ' solid 2px' }"
+    >
+      <div>
+        <h1>{{ title }}</h1>
+      </div>
+      <div>
+        <ng-container *ngFor="let paragraph of text"
+          ><p>{{ paragraph }}</p></ng-container>
+      </div>
+    </div>
+    <div class="modalsButtons">
+      
+      <button
+        *ngIf="dialogTypes[dialogType].cancel"
+        (click)="cancelEmitter.emit()"
+      >
+        Cancelar</button
+      ><button
+        *ngIf="dialogTypes[dialogType].confirm"
+        (click)="confirmEmitter.emit()"
+      >
+        Continuar
+      </button>
+    </div>
+  </app-modal>
+</div>
