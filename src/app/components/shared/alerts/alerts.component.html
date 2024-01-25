@@ -13,19 +13,9 @@
         >
       </div>
     </div>
-    <div id="alertsButtons">
+    <div class="alertsButtons">
       <button *ngIf="alertTypes[alertType].ok" (click)="hideAlerts()">Ok</button
-      ><button
-        *ngIf="alertTypes[alertType].cancel"
-        (click)="cancelEmitter.emit()"
       >
-        Cancelar</button
-      ><button
-        *ngIf="alertTypes[alertType].confirm"
-        (click)="confirmEmitter.emit()"
-      >
-        Continuar
-      </button>
     </div>
   </app-modal>
 </div>

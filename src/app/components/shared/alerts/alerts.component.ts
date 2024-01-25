@@ -11,8 +11,7 @@ import { AlertsService } from './alerts.service';
   styleUrl: './alerts.component.css',
 })
 export class AlertsComponent {
-  @Output() cancelEmitter = new EventEmitter();
-  @Output() confirmEmitter = new EventEmitter();
+  
 
   title: string = '';
   text: string[] = [];
