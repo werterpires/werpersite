@@ -8,3 +8,9 @@ export interface ISubscription {
 export interface CreateSubscriptionDto {
   subscriptionTitle: string;
 }
+
+export interface UpdateSubscriptionDto {
+  subscriptionTitle: string;
+  subscriptionActive?: boolean;
+  subscriptionId: number;
+}

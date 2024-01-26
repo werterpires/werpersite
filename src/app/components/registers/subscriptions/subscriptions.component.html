@@ -4,9 +4,12 @@
 ></app-grid-header>
 <div class="gridItens">
   <ng-container
-    *ngFor="let subscription of allUserSubscriptions; let i = index"
+    *ngFor="let subscription of allUserSubscriptions; let idx = index"
   >
-    <app-update-form>
+    <app-update-form
+      [updateMessages]="['Confirmar as alterações na assinatura?']"
+      (editEmitter)="updateSubscription(idx)"
+    >
       <input
         class="mediumField"
         type="text"
@@ -30,6 +33,7 @@
       'uma assinatura só poderá ser apagada um mês após a criação.',
       'Confirmar a criação da assinatura?'
     ]"
+    [title]="'Criar Assinatura'"
     (cancelEmitter)="createForm = false"
     (confirmEmitter)="createSubscription()"
   >

@@ -9,18 +9,31 @@
     class="formControlIcon"
     src="assets/icons/clickIcon.svg"
     alt="ícone de uma mão com o dedo indicador dentro de um círculo"
+    (click)="selectEmitter.emit()"
   />
   <ng-content></ng-content>
+
   <img
     #saveButton
     class="formControlIcon hidden"
     src="assets/icons/saveIcon.svg"
     alt="ícone de um disquete"
+    (click)="dialog = true"
   />
   <img
     #deleteButton
     class="formControlIcon hidden"
     src="assets/icons/trashIcon.svg"
     alt="ícone de uma lixeira"
+    (click)="deleteEmitter.emit()"
   />
 </form>
+<ng-container *ngIf="dialog">
+  <app-dialog
+    [dialogType]="'update'"
+    [text]="updateMessages"
+    [title]="'Confirmar as alterações?'"
+    (confirmEmitter)="emmitEvent($event)"
+    (cancelEmitter)="dialog = false"
+  ></app-dialog>
+</ng-container>

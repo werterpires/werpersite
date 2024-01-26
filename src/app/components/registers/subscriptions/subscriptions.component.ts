@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { SubscriptionsService } from './subscriptions.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ISubscription } from './types';
+import { ISubscription, UpdateSubscriptionDto } from './types';
 import { AlertsService } from '../../shared/alerts/alerts.service';
 import { GridHeaderComponent } from '../../shared/grid-header/grid-header.component';
 import { IGridHeader } from '../../shared/grid-header/types';
@@ -92,6 +92,29 @@ export class SubscriptionsComponent implements OnInit {
           this.alertsService.showAlerts('error', 'Erro ao criar assinatura', [
             err.message,
           ]);
+          this.loaderService.hideLoader();
+        },
+      });
+  }
+
+  updateSubscription(idx: number) {
+    this.loaderService.showLoader();
+    const updateSubscriptionData: UpdateSubscriptionDto =
+      utils.newUpdateSubscriptionData(this.allUserSubscriptions[idx]);
+
+    this.subscriptionsService
+      .updateSubscription(updateSubscriptionData)
+      .subscribe({
+        next: (res) => {
+          this.allUserSubscriptions[idx] = res;
+          this.loaderService.hideLoader();
+        },
+        error: (err) => {
+          this.alertsService.showAlerts(
+            'error',
+            'Erro ao atualizar assinatura',
+            [err.message]
+          );
           this.loaderService.hideLoader();
         },
       });

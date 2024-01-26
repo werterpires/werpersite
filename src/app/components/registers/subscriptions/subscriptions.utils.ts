@@ -1,5 +1,10 @@
+import { isSubscription } from 'rxjs/internal/Subscription';
 import { IGridHeader } from '../../shared/grid-header/types';
-import { CreateSubscriptionDto } from './types';
+import {
+  CreateSubscriptionDto,
+  ISubscription,
+  UpdateSubscriptionDto,
+} from './types';
 
 export const headers: IGridHeader[] = [
   {
@@ -19,3 +24,13 @@ export const headers: IGridHeader[] = [
 export const createSubscriptionData: CreateSubscriptionDto = {
   subscriptionTitle: '',
 };
+
+export function newUpdateSubscriptionData(
+  subscription: ISubscription
+): UpdateSubscriptionDto {
+  return {
+    subscriptionId: subscription.subscriptionId,
+    subscriptionTitle: subscription.subscriptionTitle,
+    subscriptionActive: subscription.subscriptionActive,
+  };
+}
