@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { DialogService } from './dialog.service';
@@ -12,12 +12,11 @@ import { DialogService } from './dialog.service';
 })
 export class DialogComponent {
   @Output() cancelEmitter = new EventEmitter();
-  @Output() confirmEmitter = new EventEmitter();
+  @Output() confirmEmitter = new EventEmitter<string>();
 
-  title: string = '';
-  text: string[] = [];
-  dialogType: string = '';
-  showDialog = false;
+  @Input() title: string = '';
+  @Input() text: string[] = [];
+  @Input() dialogType: string = '';
 
   dialogTypes: {
     [key: string]: {
@@ -47,22 +46,22 @@ export class DialogComponent {
     },
   };
 
-  constructor(private dialogService: DialogService) {
-    this.dialogService.showDialog$.subscribe((showAlerts) => {
-      this.showDialog = showAlerts;
-    });
-    this.dialogService.dialogType$.subscribe((alertType) => {
-      this.dialogType = alertType;
-    });
-    this.dialogService.dialogText$.subscribe((alertText) => {
-      this.text = alertText;
-    });
-    this.dialogService.DialogTitle$.subscribe((alertTitle) => {
-      this.title = alertTitle;
-    });
-  }
+  // constructor(private dialogService: DialogService) {
+  //   this.dialogService.showDialog$.subscribe((showAlerts) => {
+  //     this.showDialog = showAlerts;
+  //   });
+  //   this.dialogService.dialogType$.subscribe((alertType) => {
+  //     this.dialogType = alertType;
+  //   });
+  //   this.dialogService.dialogText$.subscribe((alertText) => {
+  //     this.text = alertText;
+  //   });
+  //   this.dialogService.DialogTitle$.subscribe((alertTitle) => {
+  //     this.title = alertTitle;
+  //   });
+  // }
 
-  hideAlerts() {
-    this.dialogService.hideDialog();
-  }
+  // hideDialog() {
+  //   this.dialogService.hideDialog();
+  // }
 }

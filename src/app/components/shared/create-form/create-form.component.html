@@ -1,14 +1,22 @@
 <app-modal>
+  <div id="formTitle">
+    <h1>{{ title }}</h1>
+  </div>
   <form action="">
     <ng-content></ng-content>
 
     <div class="modalsButtons">
       <button type="button" (click)="cancelEmitter.emit()">Cancelar</button
-      ><button type="button" (click)="showDialog()">Criar registro</button>
+      ><button type="button" (click)="dialog = true">Criar registro</button>
     </div>
   </form>
-  <app-dialog
-    (cancelEmitter)="hideDialog()"
-    (confirmEmitter)="confirmEmitter.emit()"
-  ></app-dialog>
+  <ng-container *ngIf="dialog">
+    <app-dialog
+      [dialogType]="'create'"
+      [text]="createMessages"
+      [title]="'Criar registro'"
+      (cancelEmitter)="dialog = false"
+      (confirmEmitter)="confirmEmitter.emit()"
+    ></app-dialog>
+  </ng-container>
 </app-modal>

@@ -4,11 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { AlertsComponent } from '../alerts/alerts.component';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DialogService } from '../dialog/dialog.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-create-form',
   standalone: true,
-  imports: [ModalComponent, FormsModule, AlertsComponent, DialogComponent],
+  imports: [
+    ModalComponent,
+    FormsModule,
+    AlertsComponent,
+    DialogComponent,
+    NgIf,
+  ],
   templateUrl: './create-form.component.html',
   styleUrl: './create-form.component.css',
 })
@@ -19,16 +26,7 @@ export class CreateFormComponent {
   @Output() confirmEmitter = new EventEmitter<void>();
 
   @Input() createMessages: string[] = [];
+  @Input() title: string = '';
 
-  showDialog() {
-    this.dialogService.showDialog(
-      'create',
-      'Criar Registro',
-      this.createMessages
-    );
-  }
-
-  hideDialog() {
-    this.dialogService.hideDialog();
-  }
+  dialog = false;
 }
