@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class Validates {
+  public static validateMinMax(min: number, max: number, value: string) {
+    return value.length >= min && value.length <= max;
+  }
   public static validateString(length: number, text: string): boolean {
     return text.length >= length;
   }

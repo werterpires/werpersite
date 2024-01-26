@@ -5,6 +5,8 @@ import { AlertsComponent } from '../alerts/alerts.component';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DialogService } from '../dialog/dialog.service';
 import { NgIf } from '@angular/common';
+import { AlertsService } from '../alerts/alerts.service';
+import { LoaderService } from '../loader/loader.service';
 
 @Component({
   selector: 'app-create-form',
@@ -20,13 +22,39 @@ import { NgIf } from '@angular/common';
   styleUrl: './create-form.component.css',
 })
 export class CreateFormComponent {
-  constructor(private readonly dialogService: DialogService) {}
+  constructor(
+    private readonly dialogService: DialogService,
+    private readonly alertsService: AlertsService,
+    private readonly loaderService: LoaderService
+  ) {}
 
   @Output() cancelEmitter = new EventEmitter<void>();
   @Output() confirmEmitter = new EventEmitter<void>();
 
   @Input() createMessages: string[] = [];
   @Input() title: string = '';
+  @Input() validateForm!: Function;
+  @Input() createData!: Object;
+
+  createFormValidateAndShowDialog() {
+    this.loaderService.showLoader;
+    if (!this.createData || !this.validateForm) {
+      this.loaderService.hideLoader;
+      return;
+    }
+    const errorMessages = this.validateForm(this.createData);
+    if (errorMessages.length > 0) {
+      this.alertsService.showAlerts(
+        'error',
+        'Erro ao criar assinatura',
+        errorMessages
+      );
+      this.loaderService.hideLoader;
+    } else {
+      this.dialog = true;
+      this.loaderService.hideLoader;
+    }
+  }
 
   dialog = false;
 }

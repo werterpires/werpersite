@@ -34,18 +34,38 @@
       'Confirmar a criação da assinatura?'
     ]"
     [title]="'Criar Assinatura'"
+    [validateForm]="utils.validateCreateForm"
+    [createData]="createSubscriptionData"
     (cancelEmitter)="createForm = false"
     (confirmEmitter)="createSubscription()"
   >
-    <label class="createLabel" for="subscriptionTitle"
-      >Título da Subscrição:
-    </label>
-    <input
-      class="mediumField"
-      type="text"
-      class="createInput"
-      name="subscriptionTitle"
-      id="subscriptionTitle"
-      [(ngModel)]="createSubscriptionData.subscriptionTitle"
-  /></app-create-form>
+    <div class="formItem">
+      <label class="createLabel" for="subscriptionTitle"
+        >Título da Subscrição:
+      </label>
+      <input
+        class="mediumField"
+        type="text"
+        class="createInput"
+        name="subscriptionTitle"
+        id="subscriptionTitle"
+        [(ngModel)]="createSubscriptionData.subscriptionTitle"
+        (blur)="
+          formErrorService.validateMinMax(
+            createFormErrors,
+            3,
+            100,
+            createSubscriptionData.subscriptionTitle,
+            'subscriptionTitle'
+          )
+        "
+      />
+      <ng-container *ngIf="createFormErrors['subscriptionTitle'].active">
+        <app-form-error
+          [errorText]="createFormErrors['subscriptionTitle'].errorText"
+        >
+        </app-form-error>
+      </ng-container>
+    </div>
+  </app-create-form>
 </ng-container>

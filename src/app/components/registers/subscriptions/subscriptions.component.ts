@@ -16,6 +16,9 @@ import { DatePipe } from '../../../pipes/date.pipe';
 import { CreateFormComponent } from '../../shared/create-form/create-form.component';
 import { CreateSubscriptionDto } from './types';
 import * as utils from './subscriptions.utils';
+import { FormErrorComponent } from '../../shared/form-error/form-error.component';
+import { FormErrorService } from '../../shared/form-error/form-error.service';
+import { SubscriptionsUtils } from './subscriptions.utils';
 
 @Component({
   selector: 'app-subscriptions',
@@ -30,6 +33,7 @@ import * as utils from './subscriptions.utils';
     DatePipe,
     CreateFormComponent,
     FormsModule,
+    FormErrorComponent,
   ],
   providers: [SubscriptionsService],
   templateUrl: './subscriptions.component.html',
@@ -39,15 +43,19 @@ export class SubscriptionsComponent implements OnInit {
   user: IUserFromJwt | null = null;
   allUserSubscriptions: ISubscription[] = [];
   createForm = false;
-  headers: IGridHeader[] = utils.headers;
-  createSubscriptionData: CreateSubscriptionDto = utils.createSubscriptionData;
+  headers: IGridHeader[] = this.utils.headers;
+  createSubscriptionData: CreateSubscriptionDto =
+    this.utils.createSubscriptionData;
+  createFormErrors = this.utils.createFormErros;
 
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
     private readonly loaderService: LoaderService,
     private readonly subscriptionsService: SubscriptionsService,
-    private readonly alertsService: AlertsService
+    private readonly alertsService: AlertsService,
+    public formErrorService: FormErrorService,
+    public readonly utils: SubscriptionsUtils
   ) {}
 
   ngOnInit(): void {
@@ -100,7 +108,7 @@ export class SubscriptionsComponent implements OnInit {
   updateSubscription(idx: number) {
     this.loaderService.showLoader();
     const updateSubscriptionData: UpdateSubscriptionDto =
-      utils.newUpdateSubscriptionData(this.allUserSubscriptions[idx]);
+      this.utils.newUpdateSubscriptionData(this.allUserSubscriptions[idx]);
 
     this.subscriptionsService
       .updateSubscription(updateSubscriptionData)

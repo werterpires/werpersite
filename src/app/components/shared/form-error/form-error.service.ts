@@ -51,4 +51,14 @@ export class FormErrorService {
   ) {
     errorForm[field].active = !Validates.validatePersonType(personType.trim());
   }
+
+  validateMinMax(
+    errorForm: IFormErrors,
+    min: number,
+    max: number,
+    value: string,
+    field: string
+  ) {
+    errorForm[field].active = !Validates.validateMinMax(min, max, value.trim());
+  }
 }

@@ -1,13 +1,16 @@
 <app-modal>
   <div id="formTitle">
     <h1>{{ title }}</h1>
+    <p>createData: {{ createData }}</p>
   </div>
-  <form action="">
+  <form id="createForm">
     <ng-content></ng-content>
 
     <div class="modalsButtons">
       <button type="button" (click)="cancelEmitter.emit()">Cancelar</button
-      ><button type="button" (click)="dialog = true">Criar registro</button>
+      ><button type="button" (click)="createFormValidateAndShowDialog()">
+        Criar registro
+      </button>
     </div>
   </form>
   <ng-container *ngIf="dialog">
