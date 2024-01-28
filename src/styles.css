@@ -12,6 +12,10 @@
   --fontAnek: "Anek Gujarati", sans-serif;
   --darkPlace: #9f8975;
   --lightPlace: #f8d5b7;
+
+  --darkBlack: #12161e;
+  --gray: #272d35;
+  --lightGray: #a9abae;
 }
 
 * {
@@ -21,11 +25,14 @@
 }
 
 html {
-  background-color: var(--darkGreen);
+  background-color: var(--darkBlack);
 }
 
 p {
   align-self: center;
+  font-family: var(--fontAnek);
+  font-size: 14px;
+  padding: 5px;
 }
 
 textarea {
@@ -49,13 +56,46 @@ textarea {
   outline: none;
   border: none;
   background-color: transparent;
-  font-size: 17px;
+  font-size: 14px;
 
   border-radius: 5px;
 
   cursor: default;
   transition: 0.2s ease-in-out all;
   align-self: center;
+  color: white;
+}
+
+.checkboxLabel {
+  display: flex;
+  padding: 0 5px;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  display: none;
+}
+
+.checkboxLabel input[type="checkbox"] + .customCheckbox::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: -webkit-baseline-middle;
+  background-color: var(--darkBlack);
+}
+
+.checkboxLabel input[type="checkbox"]:checked + .customCheckbox::before {
+  background-color: var(--darkBlack);
+  content: "\2713";
+  text-align: center;
+
+  color: #4bab3c;
+  text-shadow: 0 0 0.2em #4bab3c;
+  box-shadow: 0 0 0.5em var(--gray);
+
+  line-height: 7px;
 }
 
 .updateForm input:hover,
@@ -70,6 +110,10 @@ textarea {
   background-color: var(--softHover);
   color: var(--darkGreen);
   cursor: text;
+}
+
+.miniField {
+  width: 56px;
 }
 
 .tinyField {

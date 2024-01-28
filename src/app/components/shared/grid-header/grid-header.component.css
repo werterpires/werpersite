@@ -2,17 +2,18 @@
   padding-left: 30px;
   display: flex;
   gap: 10px;
-  background-color: var(--green);
+  /* background-color: var(--green); */
 }
 
 .gridHeader * {
   padding: 5px;
   font-family: var(--fontAnek);
-  font-weight: bold;
+  font-weight: normal;
 
-  color: white;
+  color: var(--lightGray);
+  font-size: 14px;
 
-  text-align: center;
+  text-align: left;
 }
 
 #addIcon {
@@ -26,6 +27,10 @@
 
 #addIcon:active {
   scale: 1.1;
+}
+
+.miniHeader {
+  width: 56px;
 }
 
 .tinyHeader {

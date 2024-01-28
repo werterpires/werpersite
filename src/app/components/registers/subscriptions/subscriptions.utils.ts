@@ -20,7 +20,7 @@ export class SubscriptionsUtils {
     },
     {
       title: 'Ativa',
-      size: 'tinyHeader',
+      size: 'miniHeader',
     },
     {
       title: 'Validade',
