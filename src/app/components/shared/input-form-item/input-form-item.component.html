@@ -1,0 +1,18 @@
+<div class="createFormItem">
+  <ng-container *ngIf="label">
+    <label class="createLabel" for="subscriptionTitle">{{ label }} </label>
+  </ng-container>
+
+  <input
+    [ngClass]="inputClass"
+    [type]="inputType"
+    [name]="inputName"
+    [id]="inputName"
+    [(ngModel)]="value"
+    (input)="inputEmitter.emit(value)"
+    (blur)="blurEmitter.emit()"
+  />
+  <ng-container *ngIf="formError.active[idx]">
+    <app-form-error [errorText]="formError.errorText"> </app-form-error>
+  </ng-container>
+</div>

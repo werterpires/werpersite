@@ -8,48 +8,81 @@ import { CreateSignerUserDto } from '../../auth/logon/types';
 })
 export class FormErrorService {
   constructor() {}
-  validateNames(errorForm: IFormErrors, name: string, field: string) {
-    errorForm[field].active = !Validates.validateNames(name.trim());
+  validateNames(
+    errorForm: IFormErrors,
+    name: string,
+    field: string,
+    idx: number
+  ) {
+    errorForm[field].active[idx] = !Validates.validateNames(name.trim());
   }
 
-  validateCompanyName(errorForm: IFormErrors, name: string, field: string) {
-    errorForm[field].active = !Validates.validateComanyNames(name.trim());
+  validateCompanyName(
+    errorForm: IFormErrors,
+    name: string,
+    field: string,
+    idx: number
+  ) {
+    errorForm[field].active[idx] = !Validates.validateComanyNames(name.trim());
   }
 
-  validateCpf(errorForm: IFormErrors, cpf: string, field: string) {
-    errorForm[field].active = !Validates.validateCpfData(cpf.trim());
+  validateCpf(errorForm: IFormErrors, cpf: string, field: string, idx: number) {
+    errorForm[field].active[idx] = !Validates.validateCpfData(cpf.trim());
   }
 
-  validateCellPhone(errorForm: IFormErrors, cellphone: string, field: string) {
-    errorForm[field].active = !Validates.validatePhoneNumber(cellphone.trim());
+  validateCellPhone(
+    errorForm: IFormErrors,
+    cellphone: string,
+    field: string,
+    idx: number
+  ) {
+    errorForm[field].active[idx] = !Validates.validatePhoneNumber(
+      cellphone.trim()
+    );
   }
 
-  validateEmail(errorForm: IFormErrors, email: string, field: string) {
-    errorForm[field].active = !Validates.validateEmailData(email.trim());
+  validateEmail(
+    errorForm: IFormErrors,
+    email: string,
+    field: string,
+    idx: number
+  ) {
+    errorForm[field].active[idx] = !Validates.validateEmailData(email.trim());
   }
 
   validateIsEqual(
     errorForm: IFormErrors,
     string1: string,
     string2: string,
-    field: string
+    field: string,
+    idx: number
   ) {
-    errorForm[field].active = !Validates.validateIsEqual(
+    errorForm[field].active[idx] = !Validates.validateIsEqual(
       string1.trim(),
       string2.trim()
     );
   }
 
-  validatePassword(errorForm: IFormErrors, password: string, field: string) {
-    errorForm[field].active = !Validates.validatePasswordData(password.trim());
+  validatePassword(
+    errorForm: IFormErrors,
+    password: string,
+    field: string,
+    idx: number
+  ) {
+    errorForm[field].active[idx] = !Validates.validatePasswordData(
+      password.trim()
+    );
   }
 
   validatePersonType(
     errorForm: IFormErrors,
     personType: string,
-    field: string
+    field: string,
+    idx: number
   ) {
-    errorForm[field].active = !Validates.validatePersonType(personType.trim());
+    errorForm[field].active[idx] = !Validates.validatePersonType(
+      personType.trim()
+    );
   }
 
   validateMinMax(
@@ -57,8 +90,31 @@ export class FormErrorService {
     min: number,
     max: number,
     value: string,
-    field: string
+    field: string,
+    idx: number
   ) {
-    errorForm[field].active = !Validates.validateMinMax(min, max, value.trim());
+    errorForm[field].active[idx] = !Validates.validateMinMax(
+      min,
+      max,
+      value.trim()
+    );
+  }
+
+  validateIsBoolean(
+    errorForm: IFormErrors,
+    value: any,
+    field: string,
+    idx: number
+  ) {
+    errorForm[field].active[idx] = !Validates.validateIsBoolean(value);
+  }
+
+  validateIsNumber(
+    errorForm: IFormErrors,
+    value: any,
+    field: string,
+    idx: number
+  ) {
+    errorForm[field].active[idx] = !Validates.validateIsNumber(value);
   }
 }

@@ -32,11 +32,11 @@ export class LoginComponent {
   formErrors: IFormErrors = {
     email: {
       errorText: ['Email inválido'],
-      active: false,
+      active: [],
     },
     password: {
       errorText: ['Senha inválida'],
-      active: false,
+      active: [],
     },
   };
 

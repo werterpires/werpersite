@@ -17,12 +17,13 @@
                   formErrorService.validateNames(
                     form1Errors,
                     logonName.value,
-                    'name'
+                    'name',
+                    0
                   )
                 "
               />
               <label class="longonLabel" for="logonName">Nome</label>
-              <ng-container *ngIf="form1Errors['name'].active">
+              <ng-container *ngIf="form1Errors['name'].active[0]">
                 <app-form-error
                   [errorText]="form1Errors['name'].errorText"
                 ></app-form-error>
@@ -40,12 +41,13 @@
                   formErrorService.validateNames(
                     form1Errors,
                     logonSurname.value,
-                    'surname'
+                    'surname',
+                    0
                   )
                 "
               />
               <label class="longonLabel" for="logonSurname">Sobrenome </label>
-              <ng-container *ngIf="form1Errors['surname'].active">
+              <ng-container *ngIf="form1Errors['surname'].active[0]">
                 <app-form-error
                   [errorText]="form1Errors['surname'].errorText"
                 ></app-form-error>
@@ -63,11 +65,11 @@
                 [(ngModel)]="createSignerUserData.cpf"
                 (input)="maskCpf()"
                 (blur)="
-                  formErrorService.validateCpf(form1Errors, cpf.value, 'cpf')
+                  formErrorService.validateCpf(form1Errors, cpf.value, 'cpf', 0)
                 "
               />
               <label class="longonLabel">CPF </label>
-              <ng-container *ngIf="form1Errors['cpf'].active">
+              <ng-container *ngIf="form1Errors['cpf'].active[0]">
                 <app-form-error
                   [errorText]="form1Errors['cpf'].errorText"
                 ></app-form-error>
@@ -86,12 +88,13 @@
                   formErrorService.validateCellPhone(
                     form1Errors,
                     cellphone.value,
-                    'cellphone'
+                    'cellphone',
+                    0
                   )
                 "
               />
               <label class="longonLabel">Telefone </label>
-              <ng-container *ngIf="form1Errors['cellphone'].active">
+              <ng-container *ngIf="form1Errors['cellphone'].active[0]">
                 <app-form-error
                   [errorText]="form1Errors['cellphone'].errorText"
                 ></app-form-error>
@@ -111,12 +114,13 @@
                   formErrorService.validateEmail(
                     form1Errors,
                     email.value,
-                    'email'
+                    'email',
+                    0
                   )
                 "
               />
               <label class="longonLabel">Email </label>
-              <ng-container *ngIf="form1Errors['email'].active">
+              <ng-container *ngIf="form1Errors['email'].active[0]">
                 <app-form-error
                   [errorText]="form1Errors['email'].errorText"
                 ></app-form-error>
@@ -135,12 +139,13 @@
                     form1Errors,
                     email.value,
                     confirmEmailInput.value,
-                    'emailConfirm'
+                    'emailConfirm',
+                    0
                   )
                 "
               />
               <label class="longonLabel">Confirmar Email </label>
-              <ng-container *ngIf="form1Errors['emailConfirm'].active">
+              <ng-container *ngIf="form1Errors['emailConfirm'].active[0]">
                 <app-form-error
                   [errorText]="form1Errors['emailConfirm'].errorText"
                 ></app-form-error>
@@ -160,7 +165,8 @@
                   formErrorService.validatePassword(
                     form1Errors,
                     password.value,
-                    'password'
+                    'password',
+                    0
                   )
                 "
               />
@@ -173,7 +179,7 @@
                 title="Mostrar senha"
                 (click)="formsUtils.changeInputType(password)"
               />
-              <ng-container *ngIf="form1Errors['password'].active">
+              <ng-container *ngIf="form1Errors['password'].active[0]">
                 <app-form-error
                   [errorText]="form1Errors['password'].errorText"
                 ></app-form-error>
@@ -192,13 +198,14 @@
                     form1Errors,
                     password.value,
                     confirmPasswordInput.value,
-                    'passwordConfirm'
+                    'passwordConfirm',
+                    0
                   )
                 "
               />
               <label class="longonLabel">Confirmar senha</label>
 
-              <ng-container *ngIf="form1Errors['passwordConfirm'].active">
+              <ng-container *ngIf="form1Errors['passwordConfirm'].active[0]">
                 <app-form-error
                   [errorText]="form1Errors['passwordConfirm'].errorText"
                 ></app-form-error>
@@ -229,14 +236,15 @@
                   formErrorService.validateCompanyName(
                     form2Errors,
                     logonCompanyName.value,
-                    'name'
+                    'name',
+                    0
                   )
                 "
               />
               <label class="longonLabel" for="logonCompanyName"
                 >Nome da empresa
               </label>
-              <ng-container *ngIf="form2Errors['name'].active">
+              <ng-container *ngIf="form2Errors['name'].active[0]">
                 <app-form-error
                   [errorText]="form2Errors['name'].errorText"
                 ></app-form-error>
@@ -253,7 +261,8 @@
                   formErrorService.validatePersonType(
                     form2Errors,
                     personType.value,
-                    'personType'
+                    'personType',
+                    0
                   )
                 "
               >

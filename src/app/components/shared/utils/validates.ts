@@ -90,4 +90,12 @@ export class Validates {
   public static validatePersonType(personType: string) {
     return personType === 'f' || personType === 'j';
   }
+
+  public static validateIsBoolean(value: any) {
+    return value === true || value === false;
+  }
+
+  public static validateIsNumber(value: any) {
+    return !isNaN(value);
+  }
 }

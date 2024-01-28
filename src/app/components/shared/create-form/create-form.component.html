@@ -1,14 +1,13 @@
 <app-modal>
   <div id="formTitle">
     <h1>{{ title }}</h1>
-    <p>createData: {{ createData }}</p>
   </div>
   <form id="createForm">
     <ng-content></ng-content>
 
     <div class="modalsButtons">
       <button type="button" (click)="cancelEmitter.emit()">Cancelar</button
-      ><button type="button" (click)="createFormValidateAndShowDialog()">
+      ><button type="button" (click)="validateCreateFormAndShowDialog()">
         Criar registro
       </button>
     </div>

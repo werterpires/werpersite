@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DialogService } from '../dialog/dialog.service';
 import { NgIf } from '@angular/common';
+import { LoaderService } from '../loader/loader.service';
+import { AlertsService } from '../alerts/alerts.service';
 
 @Component({
   selector: 'app-update-form',
@@ -13,12 +15,29 @@ import { NgIf } from '@angular/common';
 })
 export class UpdateFormComponent {
   @Input() updateMessages: string[] = [];
+  @Input() validateForm!: Function;
+  @Input() updateData!: Object;
 
   @Output() deleteEmitter = new EventEmitter<void>();
   @Output() editEmitter = new EventEmitter<void>();
   @Output() selectEmitter = new EventEmitter<void>();
 
-  constructor(private dialogService: DialogService) {}
+  constructor(
+    private dialogService: DialogService,
+    private loaderService: LoaderService,
+    private alertsService: AlertsService
+  ) {}
+
+  validateUpdateFormAndShowDialog() {
+    this.loaderService.showLoader;
+    if (!this.updateData || !this.validateForm) {
+      this.loaderService.hideLoader;
+      return;
+    }
+    if (this.validateForm(this.updateData)) {
+      this.dialog = true;
+    }
+  }
 
   dialog = false;
 

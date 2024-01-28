@@ -13,12 +13,17 @@
               [(ngModel)]="loginData.email"
               placeholder=""
               (blur)="
-                formErrorService.validateEmail(formErrors, email.value, 'email')
+                formErrorService.validateEmail(
+                  formErrors,
+                  email.value,
+                  'email',
+                  0
+                )
               "
             />
             <label class="longonLabel">Email </label>
 
-            <ng-container *ngIf="formErrors['email'].active">
+            <ng-container *ngIf="formErrors['email'].active[0]">
               <app-form-error [errorText]="formErrors['email'].errorText">
               </app-form-error>
             </ng-container>
@@ -35,7 +40,8 @@
                 formErrorService.validatePassword(
                   formErrors,
                   password.value,
-                  'password'
+                  'password',
+                  0
                 )
               "
             />
@@ -48,7 +54,7 @@
               title="Mostrar senha"
               (click)="formsUtils.changeInputType(password)"
             />
-            <ng-container *ngIf="formErrors['password'].active">
+            <ng-container *ngIf="formErrors['password'].active[0]">
               <app-form-error [errorText]="formErrors['password'].errorText">
               </app-form-error>
             </ng-container>

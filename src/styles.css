@@ -137,8 +137,6 @@ textarea {
 .createLabel {
   width: fit-content;
 
-  /* left: 10px;
-  bottom: 38px; */
   padding: 0 4px;
   border-radius: 5px;
   translate: 10px 9px;

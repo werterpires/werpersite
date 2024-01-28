@@ -19,6 +19,7 @@ import * as utils from './subscriptions.utils';
 import { FormErrorComponent } from '../../shared/form-error/form-error.component';
 import { FormErrorService } from '../../shared/form-error/form-error.service';
 import { SubscriptionsUtils } from './subscriptions.utils';
+import { InputCreateFormItemComponent } from '../../shared/input-form-item/input-form-item.component';
 
 @Component({
   selector: 'app-subscriptions',
@@ -34,6 +35,7 @@ import { SubscriptionsUtils } from './subscriptions.utils';
     CreateFormComponent,
     FormsModule,
     FormErrorComponent,
+    InputCreateFormItemComponent,
   ],
   providers: [SubscriptionsService],
   templateUrl: './subscriptions.component.html',
@@ -47,6 +49,7 @@ export class SubscriptionsComponent implements OnInit {
   createSubscriptionData: CreateSubscriptionDto =
     this.utils.createSubscriptionData;
   createFormErrors = this.utils.createFormErros;
+  updateFormErrors = this.utils.updateFormErros;
 
   constructor(
     private readonly authService: AuthService,

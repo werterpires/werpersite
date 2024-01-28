@@ -41,48 +41,48 @@ export class LogonComponent {
   form1Errors: IFormErrors = {
     name: {
       errorText: ['O nome deve possuir pelo menos 3 caracteres'],
-      active: false,
+      active: [],
     },
     surname: {
       errorText: ['O sobrenome deve possuir pelo menos 3 caracteres'],
-      active: false,
+      active: [],
     },
     cpf: {
       errorText: ['CPF inválido'],
-      active: false,
+      active: [],
     },
     cellphone: {
       errorText: ['Celular inválido'],
-      active: false,
+      active: [],
     },
     email: {
       errorText: ['Email inválido'],
-      active: false,
+      active: [],
     },
     emailConfirm: {
       errorText: ['emails não conferem'],
-      active: false,
+      active: [],
     },
     password: {
       errorText: [
         `A senha deve ter entre 8 e 16 caracteres e ter pelo menos uma letra maiúscula, uma letra minúscula, um número e um dos seguintes caracteres especiais: !@#$%^&*()_+{}[]|\:;"'<>,.?/`,
       ],
-      active: false,
+      active: [],
     },
     passwordConfirm: {
       errorText: ['Senhas não conferem'],
-      active: false,
+      active: [],
     },
   };
 
   form2Errors: IFormErrors = {
     name: {
       errorText: ['O nome deve possuir pelo menos 3 caracteres'],
-      active: false,
+      active: [],
     },
     personType: {
       errorText: ['Tipo inválido'],
-      active: false,
+      active: [],
     },
   };
 

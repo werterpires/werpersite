@@ -1,6 +1,6 @@
 export interface IFormError {
   errorText: string[];
-  active: boolean;
+  active: boolean[];
 }
 
 export interface IFormErrors {
