@@ -15,6 +15,7 @@ import { AlertsService } from '../alerts/alerts.service';
 })
 export class UpdateFormComponent {
   @Input() updateMessages: string[] = [];
+  @Input() deleteMessages: string[] = [];
   @Input() validateForm!: Function;
   @Input() updateData!: Object;
 
@@ -22,11 +23,10 @@ export class UpdateFormComponent {
   @Output() editEmitter = new EventEmitter<void>();
   @Output() selectEmitter = new EventEmitter<void>();
 
-  constructor(
-    private dialogService: DialogService,
-    private loaderService: LoaderService,
-    private alertsService: AlertsService
-  ) {}
+  updateDialog = false;
+  deleteDialog = false;
+
+  constructor(private loaderService: LoaderService) {}
 
   validateUpdateFormAndShowDialog() {
     this.loaderService.showLoader;
@@ -35,11 +35,9 @@ export class UpdateFormComponent {
       return;
     }
     if (this.validateForm(this.updateData)) {
-      this.dialog = true;
+      this.updateDialog = true;
     }
   }
-
-  dialog = false;
 
   emmitEvent(emitter: string) {
     if (emitter === 'delete') {

@@ -132,4 +132,22 @@ export class SubscriptionsComponent implements OnInit {
         },
       });
   }
+
+  deleteSubscriptionById(idx: number) {
+    this.loaderService.showLoader();
+    this.subscriptionsService
+      .deleteSubscription(this.allUserSubscriptions[idx].subscriptionId)
+      .subscribe({
+        next: () => {
+          this.allUserSubscriptions.splice(idx, 1);
+          this.loaderService.hideLoader();
+        },
+        error: (err) => {
+          this.alertsService.showAlerts('error', 'Erro ao deletar assinatura', [
+            err.message,
+          ]);
+          this.loaderService.hideLoader();
+        },
+      });
+  }
 }

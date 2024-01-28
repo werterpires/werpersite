@@ -29,8 +29,8 @@ export class DialogComponent {
     delete: {
       color: '#ff0000',
       icon: 'error_outline',
-      cancel: false,
-      confirm: false,
+      cancel: true,
+      confirm: true,
     },
     create: {
       color: '#00ff00',

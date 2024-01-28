@@ -61,4 +61,17 @@ export class SubscriptionsService {
         })
       );
   }
+
+  deleteSubscription(id: number): Observable<void> {
+    const headers = this.authService.getHeadObject();
+    return this.http
+      .delete<void>(`http://localhost:3000/subscriptions/${id}`, {
+        headers,
+      })
+      .pipe(
+        catchError((error) => {
+          return throwError(() => new Error(error.error.message));
+        })
+      );
+  }
 }
