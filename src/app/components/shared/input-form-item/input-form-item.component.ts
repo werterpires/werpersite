@@ -11,7 +11,7 @@ import { FormErrorComponent } from '../form-error/form-error.component';
   templateUrl: './input-form-item.component.html',
   styleUrl: './input-form-item.component.css',
 })
-export class InputCreateFormItemComponent {
+export class InputFormItemComponent {
   @Input() idx: number = 0;
   @Input() value: string = '';
   @Input() label: string | null = null;

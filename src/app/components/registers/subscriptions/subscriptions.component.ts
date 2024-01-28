@@ -19,7 +19,8 @@ import * as utils from './subscriptions.utils';
 import { FormErrorComponent } from '../../shared/form-error/form-error.component';
 import { FormErrorService } from '../../shared/form-error/form-error.service';
 import { SubscriptionsUtils } from './subscriptions.utils';
-import { InputCreateFormItemComponent } from '../../shared/input-form-item/input-form-item.component';
+import { InputFormItemComponent } from '../../shared/input-form-item/input-form-item.component';
+import { SubscriptionsCreateFormComponent } from './subscriptions-create-form/subscriptions-create-form.component';
 
 @Component({
   selector: 'app-subscriptions',
@@ -35,7 +36,8 @@ import { InputCreateFormItemComponent } from '../../shared/input-form-item/input
     CreateFormComponent,
     FormsModule,
     FormErrorComponent,
-    InputCreateFormItemComponent,
+    InputFormItemComponent,
+    SubscriptionsCreateFormComponent,
   ],
   providers: [SubscriptionsService],
   templateUrl: './subscriptions.component.html',

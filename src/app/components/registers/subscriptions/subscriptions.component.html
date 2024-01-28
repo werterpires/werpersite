@@ -42,35 +42,10 @@
     </app-update-form>
   </ng-container>
 </div>
-<ng-container *ngIf="createForm"
-  ><app-create-form
-    [createMessages]="[
-      'uma assinatura só poderá ser apagada um mês após a criação.',
-      'Confirmar a criação da assinatura?'
-    ]"
-    [title]="'Criar Assinatura'"
-    [validateForm]="utils.validateCreateForm"
-    [createData]="createSubscriptionData"
+<ng-container *ngIf="createForm">
+  <app-subscriptions-create-form
     (cancelEmitter)="createForm = false"
-    (confirmEmitter)="createSubscription()"
+    (createEmitter)="allUserSubscriptions.push($event)"
   >
-    <app-input-form-item
-      [label]="'Título da Subscrição'"
-      [inputClass]="['mediumField', 'createInput']"
-      [inputType]="'text'"
-      [inputName]="'subscriptionTitle'"
-      (inputEmitter)="createSubscriptionData.subscriptionTitle = $event"
-      [formError]="createFormErrors['subscriptionTitle']"
-      (blurEmitter)="
-        formErrorService.validateMinMax(
-          createFormErrors,
-          3,
-          100,
-          createSubscriptionData.subscriptionTitle,
-          'subscriptionTitle',
-          0
-        )
-      "
-    ></app-input-form-item>
-  </app-create-form>
+  </app-subscriptions-create-form>
 </ng-container>
