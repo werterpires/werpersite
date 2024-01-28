@@ -1,8 +1,9 @@
 #operationalContainer {
   width: calc(85vw - 20px);
   height: 84vh;
-  background-color: var(--softOrange);
+  background-color: var(--gray);
   padding: 20px;
   overflow-y: auto;
-  border-radius: 10px;
+  border-radius: 20px;
+  color: white;
 }
