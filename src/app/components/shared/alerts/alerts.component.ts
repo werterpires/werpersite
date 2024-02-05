@@ -11,8 +11,6 @@ import { AlertsService } from './alerts.service';
   styleUrl: './alerts.component.css',
 })
 export class AlertsComponent {
-  
-
   title: string = '';
   text: string[] = [];
   alertType: string = '';
@@ -28,28 +26,28 @@ export class AlertsComponent {
     };
   } = {
     error: {
-      color: '#ff0000',
+      color: '#aa3c3c',
       icon: 'error_outline',
       ok: true,
       cancel: false,
       confirm: false,
     },
     success: {
-      color: '#00ff00',
+      color: '#4bab3c',
       icon: 'check_circle_outline',
       ok: true,
       cancel: false,
       confirm: false,
     },
     warning: {
-      color: '#ffff00',
+      color: '#aaa13c',
       icon: 'warning_outline',
       ok: false,
       cancel: true,
       confirm: true,
     },
     info: {
-      color: '#00ffff',
+      color: '#3c43aa',
       icon: 'info_outline',
       ok: true,
       cancel: false,

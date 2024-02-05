@@ -4,22 +4,32 @@
   (mouseenter)="deleteButton.classList.remove('hidden')"
   (mouseleave)="deleteButton.classList.add('hidden')"
 >
-  <img
-    #clickButton
-    class="formControlIcon"
-    src="assets/icons/clickIcon.svg"
-    alt="ícone de uma mão com o dedo indicador dentro de um círculo"
-    (click)="selectEmitter.emit()"
-  />
+  <a
+    class="formControlSpace"
+    [routerLink]="id.toString()"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+  >
+    <img
+      #clickButton
+      class="formControlIcon"
+      src="assets/icons/clickIcon.svg"
+      alt="ícone de uma mão com o dedo indicador dentro de um círculo"
+      (click)="selectEmitter.emit()"
+    />
+  </a>
   <ng-content></ng-content>
 
-  <img
-    #saveButton
-    class="formControlIcon hidden"
-    src="assets/icons/saveIcon.svg"
-    alt="ícone de um disquete"
-    (click)="validateUpdateFormAndShowDialog()"
-  />
+  <div class="formControlSpace">
+    <img
+      class="formControlIcon hidden"
+      #saveButton
+      src="assets/icons/saveIcon.svg"
+      alt="ícone de um disquete"
+      (click)="validateUpdateFormAndShowDialog()"
+    />
+  </div>
+
   <img
     #deleteButton
     class="formControlIcon hidden"

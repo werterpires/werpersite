@@ -13,7 +13,7 @@
   min-width: 320px;
   height: fit-content;
   padding: 25px;
-  background-color: var(--softOrange);
+  background-color: var(--gray);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -44,21 +44,20 @@
   border-radius: 5px;
   translate: 10px 9px;
 
-  color: var(--darkGreen);
-  background-color: var(--softOrange);
+  color: white;
+  background-color: var(--gray);
   transition: all 0.2s ease;
   pointer-events: none;
 
   font-family: var(--fontMont);
-  font-weight: bold;
   font-size: 16px;
 }
 
 .logonInput {
   padding: 5px 3px 1px 15px;
   background-color: transparent;
-  border: 2px solid var(--darkGreen);
-  color: var(--green);
+  border: 2px solid white;
+  color: white;
   border-radius: 5px;
   font-size: 16px;
   transition: all 0.2s ease;
@@ -71,7 +70,7 @@
   padding: 5px 3px 1px 15px;
   background-color: transparent;
   border: 2px solid var(--darkGreen);
-  color: var(--green);
+  color: white;
   border-radius: 5px;
   font-size: 16px;
   transition: all 0.2s ease;
@@ -103,17 +102,22 @@
 }
 
 .logonButton {
-  width: fit-content;
+  min-width: 60px;
   padding: 10px;
-  background-color: var(--orange);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, black, transparent);
   color: white;
-  font-family: var(--fontMont);
-  font-weight: bold;
+  font-family: var(--fontAnek);
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 0.1s ease-in-out all;
+}
+
+.logonButton:hover {
+  box-shadow: 2px 2px 2px var(--darkBlack);
+  transform: translate(-1px, -1px);
 }
 
 #seePasswordIcon {

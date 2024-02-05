@@ -1,3 +1,4 @@
+<router-outlet></router-outlet>
 <app-grid-header
   [headers]="headers"
   (addEmitter)="createForm = true"
@@ -11,6 +12,7 @@
       [deleteMessages]="['Deletar a assinatura?']"
       [validateForm]="utils.validateUpdateForm"
       [updateData]="utils.newUpdateSubscriptionData(subscription)"
+      [id]="subscription.subscriptionId"
       (editEmitter)="updateSubscription(idx)"
       (deleteEmitter)="deleteSubscriptionById(idx)"
     >
@@ -44,7 +46,7 @@
         <span class="customCheckbox"></span>
       </label>
 
-      <p class="smallField">{{ subscription.validate | date }}</p>
+      <p class="tinyField">{{ subscription.validate | date }}</p>
     </app-update-form>
   </ng-container>
 </div>

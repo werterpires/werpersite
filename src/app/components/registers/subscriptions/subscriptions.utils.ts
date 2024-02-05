@@ -24,7 +24,7 @@ export class SubscriptionsUtils {
     },
     {
       title: 'Validade',
-      size: 'smallHeader',
+      size: 'tinyHeader',
     },
   ];
 

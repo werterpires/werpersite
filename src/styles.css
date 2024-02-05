@@ -16,6 +16,7 @@
   --darkBlack: #12161e;
   --gray: #272d35;
   --lightGray: #a9abae;
+  --lightGreen: #4bab3c;
 }
 
 * {
@@ -25,12 +26,24 @@
 }
 
 html {
-  background-color: var(--darkBlack);
+  /* background-color: var(--darkBlack); */
+  background-image: url("./assets/img/backHome.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: var(--orange);
+}
+
+h1 {
+  font-weight: normal;
+  letter-spacing: 1px;
 }
 
 p {
   align-self: center;
   font-family: var(--fontAnek);
+  font-weight: normal;
   font-size: 14px;
   padding: 5px;
 }
@@ -91,8 +104,8 @@ textarea {
   content: "\2713";
   text-align: center;
 
-  color: #4bab3c;
-  text-shadow: 0 0 0.2em #4bab3c;
+  color: var(--lightGreen);
+  text-shadow: 0 0 0.2em var(--lightGreen);
   box-shadow: 0 0 0.5em var(--gray);
 
   line-height: 7px;
@@ -100,15 +113,18 @@ textarea {
 
 .updateForm input:hover,
 .updateForm textarea:hover {
-  background-color: var(--softHover);
-  background-color: var(--darkGreen);
+  background-color: var(--lightGray);
   color: white;
 }
 
 .updateForm input[type="text"]:focus,
 .updateForm textarea:focus {
-  background-color: var(--softHover);
-  color: var(--darkGreen);
+  background-color: var(--gray);
+  border-top: 3px var(--darkBlack) solid;
+  border-left: 3px var(--darkBlack) solid;
+  border-bottom: 3px var(--lightGray) solid;
+  border-right: 3px var(--lightGray) solid;
+  color: var(--lightGray);
   cursor: text;
 }
 
@@ -140,12 +156,9 @@ textarea {
   width: 320px;
 }
 
-.gridItens > div {
-  border-bottom: 1px solid var(--darkPlace);
-}
-
-.gridItens > div:last-child {
-  border: none;
+.gridItens form:hover {
+  box-shadow: inset 0 0 10px var(--darkBlack);
+  border-radius: 5px;
 }
 
 .modalsButtons {
@@ -161,21 +174,26 @@ textarea {
   border: none;
   border-radius: 10px;
 
-  background-color: var(--green);
+  background: linear-gradient(-45deg, black, transparent);
   color: white;
 
   font-family: var(--fontAnek);
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.1s ease-in-out transform;
 }
 
 .modalsButtons button:hover {
-  background-color: var(--darkGreen);
+  box-shadow: 2px 2px 2px var(--darkBlack);
+  transform: translate(-1px, -1px);
 }
 
 .modalsButtons button:active {
-  background-color: var(--orange);
+  background: linear-gradient(-45deg, transparent, white);
+  color: var(--darkBlack);
+
+  box-shadow: none;
 }
 
 .createLabel {
@@ -185,21 +203,24 @@ textarea {
   border-radius: 5px;
   translate: 10px 9px;
 
-  color: var(--darkGreen);
-  background-color: var(--softOrange);
+  color: white;
+  background-color: var(--gray);
   transition: all 0.2s ease;
   pointer-events: none;
 
   font-family: var(--fontMont);
-  font-weight: bold;
+
   font-size: 16px;
 }
 
 .createInput {
   padding: 5px 3px 1px 15px;
-  background-color: transparent;
-  border: 2px solid var(--darkGreen);
-  color: var(--green);
+  border-top: 3px var(--darkBlack) solid;
+  border-left: 3px var(--darkBlack) solid;
+  border-bottom: 3px var(--lightGray) solid;
+  border-right: 3px var(--lightGray) solid;
+  background-color: var(--gray);
+  color: white;
   border-radius: 5px;
   font-size: 16px;
   transition: all 0.2s ease;

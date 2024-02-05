@@ -46,3 +46,24 @@ export interface IOccupationPermission {
   occupationId: number;
   permissionId: number;
 }
+
+export interface ITinyReceipt {
+  subscriptionId: number;
+  receiptId: number;
+  value: number;
+  paymentMethod: string;
+  dueDate: string;
+  receptDate: string;
+  dueCode: string;
+  authenticationCode: string;
+}
+
+export interface ITinySubscriptionConfiguration {
+  subscriptionConfigurationid: number;
+  subscriptionId: number;
+  subscriptionHistoric: string;
+  companiesNumber: number;
+  usersNumber: number;
+  price: number;
+  createdAt: string;
+}

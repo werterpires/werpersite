@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/sharedServices/auth.service';
 import { IUserFromJwt } from '../../shared/sharedTypes';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { SubscriptionsService } from './subscriptions.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -38,6 +38,7 @@ import { SubscriptionsCreateFormComponent } from './subscriptions-create-form/su
     FormErrorComponent,
     InputFormItemComponent,
     SubscriptionsCreateFormComponent,
+    RouterOutlet,
   ],
   providers: [SubscriptionsService],
   templateUrl: './subscriptions.component.html',
