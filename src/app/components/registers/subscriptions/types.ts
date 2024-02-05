@@ -1,3 +1,8 @@
+import {
+  ITinyReceipt,
+  ITinySubscriptionConfiguration,
+} from '../../shared/sharedTypes';
+
 export interface ISubscription {
   subscriptionId: number;
   subscriptionTitle: string;
@@ -13,4 +18,9 @@ export interface UpdateSubscriptionDto {
   subscriptionTitle: string;
   subscriptionActive?: boolean;
   subscriptionId: number;
+}
+
+export interface ICompleteSubscription extends ISubscription {
+  receipts: ITinyReceipt[];
+  subscriptionConfigs: ITinySubscriptionConfiguration[];
 }

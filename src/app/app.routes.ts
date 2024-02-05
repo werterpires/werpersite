@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { ContainerComponent } from './components/shared/container/container.component';
 import { RegistersComponent } from './components/registers/registers.component';
 import { LogonComponent } from './components/auth/logon/logon.component';
 import { LoginComponent } from './components/auth/login/login.component';
@@ -15,8 +14,11 @@ export const routes: Routes = [
     component: RegistersComponent,
     children: [
       { path: 'tipos-termos', component: TermsTypesComponent },
-      { path: 'assinaturas', component: SubscriptionsComponent },
-      { path: 'assinaturas/:id', component: OneSubscriptionComponent },
+      {
+        path: 'assinaturas',
+        component: SubscriptionsComponent,
+        children: [{ path: ':id', component: OneSubscriptionComponent }],
+      },
     ],
   },
   { path: '', component: LoginComponent },
