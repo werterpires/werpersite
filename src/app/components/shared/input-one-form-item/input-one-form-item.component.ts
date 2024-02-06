@@ -1,0 +1,31 @@
+import { NgClass, NgIf } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { IFormError } from '../form-error/types';
+import { FormErrorComponent } from '../form-error/form-error.component';
+
+@Component({
+  selector: 'app-input-one-form-item',
+  standalone: true,
+  imports: [NgClass, FormsModule, NgIf, FormErrorComponent],
+  templateUrl: './input-one-form-item.component.html',
+  styleUrl: './input-one-form-item.component.css',
+})
+export class InputOneFormItemComponent {
+  @Input() idx: number = 0;
+  @Input() value: string = '';
+  @Input() booleanValue: boolean = false;
+  @Input() label: string | null = null;
+  @Input() inputClass: string[] = ['mediumField'];
+  @Input() inputType: string = 'text';
+  @Input() inputName: string = 'inputName';
+  @Input() formError: IFormError = {
+    errorText: ['ocorreu um erro'],
+    active: [],
+  };
+  @Input() disabled: boolean = false;
+
+  @Output() blurEmitter = new EventEmitter<void>();
+  @Output() inputEmitter = new EventEmitter<string>();
+  @Output() inputBooleanEmitter = new EventEmitter<boolean>();
+}

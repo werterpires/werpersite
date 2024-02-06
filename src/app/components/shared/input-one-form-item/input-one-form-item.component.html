@@ -1,0 +1,41 @@
+<div class="updateOneFormItem">
+  <ng-container *ngIf="inputType === 'text'">
+    <ng-container *ngIf="label">
+      <label class="updateLabelText updateLabel" [for]="inputName"
+        >{{ label }}
+      </label>
+    </ng-container>
+    <input
+      [ngClass]="inputClass"
+      [type]="inputType"
+      [name]="inputName"
+      [id]="inputName"
+      [(ngModel)]="value"
+      (input)="inputEmitter.emit(value)"
+      (blur)="blurEmitter.emit()"
+      [disabled]="disabled"
+    />
+  </ng-container>
+
+  <ng-container *ngIf="inputType === 'checkbox'">
+    <label class="updateLabel updateLabelCheckBox" [for]="inputName"
+      >{{ label }}
+
+      <input
+        [ngClass]="inputClass"
+        type="checkbox"
+        [name]="inputName"
+        [id]="inputName"
+        [(ngModel)]="booleanValue"
+        #checkteste
+        (change)="inputBooleanEmitter.emit(booleanValue)"
+        (blur)="blurEmitter.emit()"
+      />
+      <span class="customCheckbox"></span>
+    </label>
+  </ng-container>
+
+  <ng-container *ngIf="formError.active[idx]">
+    <app-form-error [errorText]="formError.errorText"> </app-form-error>
+  </ng-container>
+</div>

@@ -1,0 +1,78 @@
+.updateLabel {
+  padding: 5px;
+  font-family: var(--fontAnek);
+  font-weight: normal;
+  color: var(--lightGray);
+  font-size: 14px;
+}
+
+.updateLabelText {
+  text-align: left;
+}
+
+.updateLabelCheckBox {
+  display: flex;
+  padding: 0 5px;
+}
+
+input[type="text"] {
+  outline: none;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--gray);
+  color: white;
+  font-family: var(--fontAnek);
+  font-size: 16px;
+  transition: 0.2s ease-in-out all;
+}
+
+input[type="text"]:hover {
+  height: 34.5px;
+  outline: none;
+  background-color: var(--gray);
+  border-bottom: 3px var(--darkBlack) solid;
+  border-right: 3px var(--darkBlack) solid;
+  border-top: 3px var(--lightGray) solid;
+  border-left: 3px var(--lightGray) solid;
+  /* background-color: var(--darkBlack); */
+  color: white;
+}
+/* quero que no focus ele diminua 6 px no heiht */
+input[type="text"]:focus {
+  height: 34.5px;
+  outline: none;
+  background-color: var(--gray);
+  border-top: 3px var(--darkBlack) solid;
+  border-left: 3px var(--darkBlack) solid;
+  border-bottom: 3px var(--lightGray) solid;
+  border-right: 3px var(--lightGray) solid;
+  color: var(--lightGray);
+  cursor: text;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + .customCheckbox::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 5px;
+  margin-left: 5px;
+  vertical-align: middle;
+  background-color: var(--darkBlack);
+}
+
+input[type="checkbox"]:checked + .customCheckbox::before {
+  background-color: var(--darkBlack);
+  content: "\2713";
+  text-align: center;
+  color: var(--lightGreen);
+  text-shadow: 0 0 0.2em var(--lightGreen);
+  box-shadow: 0 0 0.5em var(--gray);
+  line-height: 12px;
+}
