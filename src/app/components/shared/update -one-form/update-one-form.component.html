@@ -1,0 +1,40 @@
+<form class="updateOneForm" (input)="saveButton.classList.remove('hidden')">
+  <ng-content></ng-content>
+
+  <div class="formControlSpace">
+    <img
+      class="formControlIcon hidden"
+      #saveButton
+      src="assets/icons/saveIcon.svg"
+      alt="ícone de um disquete"
+      (click)="validateUpdateFormAndShowDialog()"
+    />
+  </div>
+
+  <img
+    #deleteButton
+    class="formControlIcon"
+    src="assets/icons/trashIcon.svg"
+    alt="ícone de uma lixeira"
+    (click)="deleteDialog = true"
+  />
+</form>
+<ng-container *ngIf="updateDialog">
+  <app-dialog
+    [dialogType]="'update'"
+    [text]="updateMessages"
+    [title]="'Atualizar registro'"
+    (confirmEmitter)="emmitEvent($event)"
+    (cancelEmitter)="updateDialog = false"
+  ></app-dialog>
+</ng-container>
+
+<ng-container *ngIf="deleteDialog">
+  <app-dialog
+    [dialogType]="'delete'"
+    [text]="deleteMessages"
+    [title]="'Deletar o registro'"
+    (confirmEmitter)="emmitEvent($event)"
+    (cancelEmitter)="deleteDialog = false"
+  ></app-dialog>
+</ng-container>

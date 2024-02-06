@@ -1,0 +1,24 @@
+.updateForm {
+  display: flex;
+  gap: 10px;
+}
+
+.formControlIcon {
+  width: 20px;
+  transition: 0.1s ease-in-out all;
+}
+
+.formControlIcon:hover {
+  translate: -1px -1px;
+}
+
+.formControlIcon:active {
+  scale: 1.1;
+}
+
+.formControlSpace {
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
