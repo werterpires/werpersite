@@ -4,6 +4,7 @@
   font-weight: normal;
   color: var(--lightGray);
   font-size: 14px;
+  flex-shrink: 0;
 }
 
 .updateLabelText {
@@ -38,6 +39,7 @@ input[type="number"] {
   background-size: 200% 100%;
   background-repeat: no-repeat;
   transition: all 0.3s linear;
+  flex-shrink: 0;
 }
 
 input[type="text"]:not(:focus):hover,
@@ -83,6 +85,7 @@ input[type="checkbox"] + .customCheckbox::before {
   margin-left: 5px;
   vertical-align: middle;
   background-color: var(--darkBlack);
+  flex-shrink: 0;
 }
 
 input[type="checkbox"]:checked + .customCheckbox::before {
