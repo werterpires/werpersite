@@ -4,39 +4,47 @@
   (mouseenter)="deleteButton.classList.remove('hidden')"
   (mouseleave)="deleteButton.classList.add('hidden')"
 >
-  <a
-    class="formControlSpace"
-    [routerLink]="id.toString()"
-    routerLinkActive="active"
-    ariaCurrentWhenActive="page"
-  >
-    <img
-      #clickButton
-      class="formControlIcon"
-      src="assets/icons/clickIcon.svg"
-      alt="ícone de uma mão com o dedo indicador dentro de um círculo"
-      (click)="selectEmitter.emit()"
-    />
-  </a>
+  <div class="formControlSpace">
+    <a
+      *ngIf="id"
+      [routerLink]="id.toString()"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      <img
+        #clickButton
+        class="formControlIcon"
+        src="assets/icons/clickIcon.svg"
+        alt="ícone de uma mão com o dedo indicador dentro de um círculo"
+        (click)="selectEmitter.emit()"
+      />
+    </a>
+  </div>
+
   <ng-content></ng-content>
 
   <div class="formControlSpace">
-    <img
-      class="formControlIcon hidden"
-      #saveButton
-      src="assets/icons/saveIcon.svg"
-      alt="ícone de um disquete"
-      (click)="validateUpdateFormAndShowDialog()"
-    />
+    <div #saveButton class="hidden">
+      <img
+        *ngIf="id"
+        class="formControlIcon"
+        src="assets/icons/saveIcon.svg"
+        alt="ícone de um disquete"
+        (click)="validateUpdateFormAndShowDialog()"
+      />
+    </div>
   </div>
-
-  <img
-    #deleteButton
-    class="formControlIcon hidden"
-    src="assets/icons/trashIcon.svg"
-    alt="ícone de uma lixeira"
-    (click)="deleteDialog = true"
-  />
+  <div class="formControlSpace">
+    <div #deleteButton class="hidden">
+      <img
+        *ngIf="id"
+        class="formControlIcon"
+        src="assets/icons/trashIcon.svg"
+        alt="ícone de uma lixeira"
+        (click)="deleteDialog = true"
+      />
+    </div>
+  </div>
 </form>
 <ng-container *ngIf="updateDialog">
   <app-dialog
