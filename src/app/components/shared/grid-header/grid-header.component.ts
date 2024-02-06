@@ -1,15 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IGridHeader } from './types';
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-grid-header',
   standalone: true,
-  imports: [NgFor, NgClass],
+  imports: [NgFor, NgClass, NgIf],
   templateUrl: './grid-header.component.html',
   styleUrl: './grid-header.component.css',
 })
 export class GridHeaderComponent {
   @Input() headers: IGridHeader[] = [];
-	@Output() addEmitter = new EventEmitter();
+  @Input() add: boolean = true;
+  @Output() addEmitter = new EventEmitter();
 }
