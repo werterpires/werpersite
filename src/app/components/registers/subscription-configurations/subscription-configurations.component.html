@@ -10,7 +10,7 @@
     <app-update-form
       [id]="subscriptionConfiguration.subscriptionConfigurationid"
     >
-      <app-input-form-item
+      <app-input-one-form-item
         [idx]="idx"
         [inputClass]="['smallField']"
         [inputName]="'createdAt'"
@@ -18,9 +18,9 @@
         [value]="subscriptionConfiguration.createdAt"
         [disabled]="true"
       >
-      </app-input-form-item>
+      </app-input-one-form-item>
 
-      <app-input-form-item
+      <app-input-one-form-item
         [idx]="idx"
         [inputClass]="['bigField']"
         [inputName]="'subscriptionHistoric'"
@@ -28,9 +28,9 @@
         [value]="subscriptionConfiguration.subscriptionHistoric"
         [disabled]="true"
       >
-      </app-input-form-item>
+      </app-input-one-form-item>
 
-      <app-input-form-item
+      <app-input-one-form-item
         [idx]="idx"
         [inputClass]="['smallField']"
         [inputName]="'companiesNumber'"
@@ -38,20 +38,19 @@
         [numberValue]="subscriptionConfiguration.companiesNumber"
         [disabled]="true"
       >
-      </app-input-form-item>
+      </app-input-one-form-item>
 
-      <app-input-form-item
+      <app-input-one-form-item
         [idx]="idx"
         [inputClass]="['smallField']"
         [inputName]="'usersNumber'"
         [inputType]="'number'"
         [numberValue]="subscriptionConfiguration.usersNumber"
         [disabled]="true"
-        [pipe]="'timeStamps'"
       >
-      </app-input-form-item>
+      </app-input-one-form-item>
 
-      <app-input-form-item
+      <app-input-one-form-item
         [idx]="idx"
         [inputClass]="['tinyField']"
         [inputName]="'price'"
@@ -59,7 +58,7 @@
         [numberValue]="subscriptionConfiguration.price"
         [disabled]="true"
       >
-      </app-input-form-item>
+      </app-input-one-form-item>
     </app-update-form>
   </ng-container>
 </div>
