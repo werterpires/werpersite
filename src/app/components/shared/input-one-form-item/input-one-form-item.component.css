@@ -15,7 +15,9 @@
   padding: 0 5px;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="date"],
+input[type="number"] {
   outline: none;
   padding: 5px;
   border: none;
@@ -23,31 +25,47 @@ input[type="text"] {
   background-color: var(--gray);
   color: white;
   font-family: var(--fontAnek);
-  font-size: 16px;
-  transition: 0.2s ease-in-out all;
+  font-size: 14px;
+  /* transition: 0.2s ease-in-out all; */
+
+  background: linear-gradient(
+    -245deg,
+    transparent 0%,
+    var(--lightGray) 10%,
+    transparent 20%
+  );
+  background-position: 150% 0%;
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  transition: all 0.3s linear;
 }
 
-input[type="text"]:hover {
-  height: 34.5px;
-  outline: none;
-  background-color: var(--gray);
-  border-bottom: 3px var(--darkBlack) solid;
-  border-right: 3px var(--darkBlack) solid;
-  border-top: 3px var(--lightGray) solid;
-  border-left: 3px var(--lightGray) solid;
-  /* background-color: var(--darkBlack); */
-  color: white;
-}
-/* quero que no focus ele diminua 6 px no heiht */
-input[type="text"]:focus {
-  height: 34.5px;
-  outline: none;
-  background-color: var(--gray);
-  border-top: 3px var(--darkBlack) solid;
-  border-left: 3px var(--darkBlack) solid;
-  border-bottom: 3px var(--lightGray) solid;
-  border-right: 3px var(--lightGray) solid;
+input[type="text"]:not(:focus):hover,
+input[type="date"]:not(:focus):hover,
+input[type="number"]:not(:focus):hover {
+  /* animation: reflex 0.5s forwards; */
+  box-shadow: var(--lightGray) 0px 0px 10px;
+
   color: var(--lightGray);
+  background-position: -150% 0%;
+}
+
+/* @keyframes reflex {
+  0% {
+    background-position: 200% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
+} */
+
+/* quero que no focus ele diminua 6 px no heiht */
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus {
+  background-color: var(--darkBlack);
+  box-shadow: var(--darkBlack) 0px 0px 10px;
+  color: white;
   cursor: text;
 }
 

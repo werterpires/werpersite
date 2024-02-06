@@ -23,6 +23,7 @@ import { MoneyPipe } from '../../../pipes/money.pipe';
 export class InputFormItemComponent {
   @Input() idx: number = 0;
   @Input() value: string = '';
+
   @Input() numberValue: number = 0;
   @Input() label: string | null = null;
   @Input() inputClass: string[] = ['mediumField'];
@@ -33,7 +34,6 @@ export class InputFormItemComponent {
     active: [],
   };
   @Input() disabled = false;
-  @Input() pipe: string = '';
 
   @Output() blurEmitter = new EventEmitter<void>();
   @Output() inputEmitter = new EventEmitter<string>();

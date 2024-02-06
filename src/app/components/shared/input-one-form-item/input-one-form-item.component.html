@@ -5,16 +5,77 @@
         >{{ label }}
       </label>
     </ng-container>
+
     <input
+      #textInput
       [ngClass]="inputClass"
-      [type]="inputType"
+      type="text"
       [name]="inputName"
       [id]="inputName"
       [(ngModel)]="value"
-      (input)="inputEmitter.emit(value)"
+      (input)="inputEmitter.emit(textInput.value)"
       (blur)="blurEmitter.emit()"
       [disabled]="disabled"
     />
+    <div class="inputContainer"></div>
+  </ng-container>
+
+  <ng-container *ngIf="inputType === 'date'">
+    <ng-container *ngIf="label">
+      <label class="updateLabelText updateLabel" [for]="inputName"
+        >{{ label }}
+      </label>
+    </ng-container>
+    <input
+      #dateInput
+      [ngClass]="inputClass"
+      type="date"
+      [name]="inputName"
+      [id]="inputName"
+      [value]="value | timeStamps"
+      (input)="inputEmitter.emit(dateInput.value)"
+      (blur)="blurEmitter.emit()"
+      [disabled]="disabled"
+    />
+  </ng-container>
+
+  <ng-container *ngIf="inputType === 'number'">
+    <ng-container *ngIf="label">
+      <label class="updateLabelText updateLabel" [for]="inputName"
+        >{{ label }}
+      </label>
+    </ng-container>
+    <input
+      #numberInput
+      [ngClass]="inputClass"
+      type="number"
+      [name]="inputName"
+      [id]="inputName"
+      [value]="numberValue"
+      (input)="inputEmitter.emit(numberInput.value)"
+      (blur)="blurEmitter.emit()"
+      [disabled]="disabled"
+    />
+  </ng-container>
+
+  <ng-container *ngIf="inputType === 'money'">
+    <ng-container *ngIf="label">
+      <label class="updateLabelText updateLabel" [for]="inputName"
+        >{{ label }}
+      </label>
+    </ng-container>
+    <input
+      #moneyInput
+      [ngClass]="inputClass"
+      type="text"
+      [name]="inputName"
+      [id]="inputName"
+      [value]="numberValue | money"
+      (input)="inputEmitter.emit(moneyInput.value)"
+      (blur)="blurEmitter.emit()"
+      [disabled]="disabled"
+    />
+    {{ moneyInput.value }}
   </ng-container>
 
   <ng-container *ngIf="inputType === 'checkbox'">

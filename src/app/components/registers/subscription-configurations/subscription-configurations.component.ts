@@ -5,7 +5,7 @@ import { subscriptionConfigurationsUtils } from './subscription-configurations.u
 import { NgFor } from '@angular/common';
 import { ITinySubscriptionConfiguration } from './types';
 import { UpdateFormComponent } from '../../shared/update-form/update-form.component';
-import { InputFormItemComponent } from '../../shared/input-form-item/input-form-item.component';
+import { InputOneFormItemComponent } from '../../shared/input-one-form-item/input-one-form-item.component';
 
 @Component({
   selector: 'app-subscription-configurations',
@@ -14,7 +14,7 @@ import { InputFormItemComponent } from '../../shared/input-form-item/input-form-
     RouterOutlet,
     GridHeaderComponent,
     UpdateFormComponent,
-    InputFormItemComponent,
+    InputOneFormItemComponent,
     NgFor,
   ],
   templateUrl: './subscription-configurations.component.html',
