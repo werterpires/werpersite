@@ -1,4 +1,4 @@
-.oneContent {
+.oneContentContainer {
   position: absolute;
   border: 1px var(--darkBlack) solid;
 
@@ -6,6 +6,12 @@
 
   border-radius: 20px;
   animation: expand 0.8s forwards ease-out;
+}
+.oneContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes expand {
@@ -34,4 +40,12 @@
     max-height: 0;
     overflow: hidden;
   }
+}
+
+.formLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
 }

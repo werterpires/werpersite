@@ -1,7 +1,5 @@
-import {
-  ITinyReceipt,
-  ITinySubscriptionConfiguration,
-} from '../../shared/sharedTypes';
+import { ITinyReceipt } from '../../shared/sharedTypes';
+import { ITinySubscriptionConfiguration } from '../subscription-configurations/types';
 
 export interface ISubscription {
   subscriptionId: number;

@@ -56,6 +56,23 @@ export class SubscriptionsUtils {
     },
   };
 
+  updateOneFormErros: IFormErrors = {
+    subscriptionTitle: {
+      errorText: ['O título da assinatura deve ter entre 3 e 100 caracteres'],
+      active: [],
+    },
+
+    subscriptionActive: {
+      errorText: ['Não é possível alterar a assinatura.'],
+      active: [],
+    },
+
+    subscriptionId: {
+      errorText: ['Não é possível alterar a assinatura.'],
+      active: [],
+    },
+  };
+
   constructor(private alertsService: AlertsService) {}
 
   newUpdateSubscriptionData(

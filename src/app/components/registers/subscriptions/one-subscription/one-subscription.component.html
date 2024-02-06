@@ -1,7 +1,61 @@
-<div class="oneContent">
+<div class="oneContentContainer">
   <app-operational-container>
-    <h1>Assinatura</h1>
-    {{ subscription.subscriptionTitle }}
-    {{ subscriptionId }}
+    <div class="oneContent">
+      <div class="oneContentHeader">
+        <h1>Assinatura</h1>
+      </div>
+      <app-update-one-form *ngIf="subscription">
+        <div class="formLine">
+          <app-input-one-form-item
+            [formError]="formErrors['subscriptionTitle']"
+            [inputClass]="['mediumField']"
+            [inputType]="'text'"
+            [inputName]="'subscriptionTitle'"
+            [value]="subscription.subscriptionTitle"
+            [label]="'Título da assinatura'"
+            (inputEmitter)="subscription.subscriptionTitle = $event"
+            (blurEmitter)="
+              formErrorService.validateMinMax(
+                formErrors,
+                3,
+                100,
+                subscription.subscriptionTitle,
+                'subscriptionTitle',
+                0
+              )
+            "
+          ></app-input-one-form-item>
+
+          <app-input-one-form-item
+            [formError]="formErrors['subscriptionActive']"
+            [inputClass]="['tinyField']"
+            [inputType]="'checkbox'"
+            [inputName]="'subscriptionActive'"
+            [booleanValue]="subscription.subscriptionActive"
+            [label]="'Assinatura ativa'"
+            (inputBooleanEmitter)="subscription.subscriptionActive = $event"
+          ></app-input-one-form-item>
+
+          <app-input-one-form-item
+            [inputClass]="['smallField']"
+            [inputType]="'text'"
+            [inputName]="'validate'"
+            [value]="subscription.validate"
+            [label]="'Validade da assinatura'"
+            [disabled]="true"
+          ></app-input-one-form-item>
+        </div>
+      </app-update-one-form>
+      <section class="oneItemSection">
+        <h2>Histórico da assinatura</h2>
+        <ng-container
+          *ngIf="subscription && subscription.subscriptionConfigs != undefined"
+        >
+          <app-subscription-configurations
+            [allSubscriptionConfigurations]="subscription.subscriptionConfigs"
+          ></app-subscription-configurations>
+        </ng-container>
+      </section>
+    </div>
   </app-operational-container>
 </div>
