@@ -38,6 +38,13 @@ html {
 h1 {
   font-weight: normal;
   letter-spacing: 1px;
+  font-size: 24px;
+}
+
+h2 {
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 21px;
 }
 
 p {
@@ -59,24 +66,6 @@ textarea {
 
 .hidden {
   display: none;
-}
-
-.updateForm input,
-.updateForm textarea {
-  padding: 5px;
-  font-family: var(--fontAnek);
-  font-weight: 400;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  font-size: 14px;
-
-  border-radius: 5px;
-
-  cursor: default;
-  transition: 0.2s ease-in-out all;
-  align-self: center;
-  color: white;
 }
 
 .checkboxLabel {
@@ -109,23 +98,6 @@ textarea {
   box-shadow: 0 0 0.5em var(--gray);
 
   line-height: 7px;
-}
-
-.updateForm input:hover,
-.updateForm textarea:hover {
-  background-color: var(--lightGray);
-  color: white;
-}
-
-.updateForm input[type="text"]:focus,
-.updateForm textarea:focus {
-  background-color: var(--gray);
-  border-top: 3px var(--darkBlack) solid;
-  border-left: 3px var(--darkBlack) solid;
-  border-bottom: 3px var(--lightGray) solid;
-  border-right: 3px var(--lightGray) solid;
-  color: var(--lightGray);
-  cursor: text;
 }
 
 .miniField {
@@ -227,4 +199,16 @@ textarea {
   font-family: var(--fontAnek);
   outline: none;
   transition: 0.5s ease all;
+}
+
+.oneItemSection {
+  margin-top: 30px;
+  border-top: var(--darkBlack) 1px solid;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
