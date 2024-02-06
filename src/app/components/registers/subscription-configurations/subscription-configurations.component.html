@@ -1,0 +1,65 @@
+<router-outlet></router-outlet>
+<app-grid-header [headers]="headers" [add]="false"></app-grid-header>
+<div class="gridItens">
+  <ng-container
+    *ngFor="
+      let subscriptionConfiguration of allSubscriptionConfigurations;
+      let idx = index
+    "
+  >
+    <app-update-form
+      [id]="subscriptionConfiguration.subscriptionConfigurationid"
+    >
+      <app-input-form-item
+        [idx]="idx"
+        [inputClass]="['smallField']"
+        [inputName]="'createdAt'"
+        [inputType]="'date'"
+        [value]="subscriptionConfiguration.createdAt"
+        [disabled]="true"
+      >
+      </app-input-form-item>
+
+      <app-input-form-item
+        [idx]="idx"
+        [inputClass]="['bigField']"
+        [inputName]="'subscriptionHistoric'"
+        [inputType]="'text'"
+        [value]="subscriptionConfiguration.subscriptionHistoric"
+        [disabled]="true"
+      >
+      </app-input-form-item>
+
+      <app-input-form-item
+        [idx]="idx"
+        [inputClass]="['smallField']"
+        [inputName]="'companiesNumber'"
+        [inputType]="'number'"
+        [numberValue]="subscriptionConfiguration.companiesNumber"
+        [disabled]="true"
+      >
+      </app-input-form-item>
+
+      <app-input-form-item
+        [idx]="idx"
+        [inputClass]="['smallField']"
+        [inputName]="'usersNumber'"
+        [inputType]="'number'"
+        [numberValue]="subscriptionConfiguration.usersNumber"
+        [disabled]="true"
+        [pipe]="'timeStamps'"
+      >
+      </app-input-form-item>
+
+      <app-input-form-item
+        [idx]="idx"
+        [inputClass]="['tinyField']"
+        [inputName]="'price'"
+        [inputType]="'money'"
+        [numberValue]="subscriptionConfiguration.price"
+        [disabled]="true"
+      >
+      </app-input-form-item>
+    </app-update-form>
+  </ng-container>
+</div>
