@@ -2,16 +2,56 @@
   <ng-container *ngIf="label">
     <label class="createLabel" for="subscriptionTitle">{{ label }} </label>
   </ng-container>
+  <ng-container *ngIf="inputType === 'text'">
+    <input
+      [ngClass]="inputClass"
+      type="text"
+      [name]="inputName"
+      [id]="inputName"
+      [(ngModel)]="value"
+      (input)="inputEmitter.emit(value)"
+      (blur)="blurEmitter.emit()"
+      [disabled]="disabled"
+    />
+  </ng-container>
+  <ng-container *ngIf="inputType === 'date'">
+    <input
+      [ngClass]="inputClass"
+      type="date"
+      [name]="inputName"
+      [id]="inputName"
+      [value]="value | timeStamps"
+      (input)="inputEmitter.emit(value)"
+      (blur)="blurEmitter.emit()"
+      [disabled]="disabled"
+    />
+  </ng-container>
+  <ng-container *ngIf="inputType === 'number'">
+    <input
+      [ngClass]="inputClass"
+      type="number"
+      [name]="inputName"
+      [id]="inputName"
+      [value]="numberValue"
+      (input)="inputEmitter.emit(value)"
+      (blur)="blurEmitter.emit()"
+      [disabled]="disabled"
+    />
+  </ng-container>
 
-  <input
-    [ngClass]="inputClass"
-    [type]="inputType"
-    [name]="inputName"
-    [id]="inputName"
-    [(ngModel)]="value"
-    (input)="inputEmitter.emit(value)"
-    (blur)="blurEmitter.emit()"
-  />
+  <ng-container *ngIf="inputType === 'money'">
+    <input
+      [ngClass]="inputClass"
+      type="text"
+      [name]="inputName"
+      [id]="inputName"
+      [value]="numberValue | money"
+      (input)="inputEmitter.emit(value)"
+      (blur)="blurEmitter.emit()"
+      [disabled]="disabled"
+    />
+  </ng-container>
+
   <ng-container *ngIf="formError.active[idx]">
     <app-form-error [errorText]="formError.errorText"> </app-form-error>
   </ng-container>
