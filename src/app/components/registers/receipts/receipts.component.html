@@ -1,0 +1,107 @@
+<router-outlet></router-outlet>
+
+<app-grid-header [headers]="headers" [add]="false"></app-grid-header>
+<div class="gridItens">
+  <ng-container *ngFor="let receipt of receipts; let idx = index">
+    <app-update-form>
+      <app-input-one-form-item
+        [idx]="idx"
+        [inputClass]="['tinyField']"
+        [inputName]="'value'"
+        [inputType]="'money'"
+        [numberValue]="receipt.value"
+        [disabled]="true"
+      >
+      </app-input-one-form-item>
+      <app-input-one-form-item
+        [idx]="idx"
+        [inputClass]="['hugeField']"
+        [inputName]="'dueCode'"
+        [inputType]="'text'"
+        [value]="receipt.dueCode"
+        [disabled]="true"
+      >
+      </app-input-one-form-item>
+
+      <app-input-one-form-item
+        [idx]="idx"
+        [inputClass]="['smallField']"
+        [inputName]="'dueDate'"
+        [inputType]="'date'"
+        [value]="receipt.dueDate"
+        [disabled]="true"
+      >
+      </app-input-one-form-item>
+
+      <app-input-one-form-item
+        [idx]="idx"
+        [inputClass]="['smallField']"
+        [inputName]="'receptDate'"
+        [inputType]="'date'"
+        [value]="receipt.receptDate"
+        [disabled]="true"
+      >
+      </app-input-one-form-item>
+
+      <app-input-one-form-item
+        [idx]="idx"
+        [inputClass]="['mediumField']"
+        [inputName]="'paymentMethod'"
+        [inputType]="'text'"
+        [value]="receipt.paymentMethod"
+        [disabled]="true"
+      >
+      </app-input-one-form-item>
+
+      <app-input-one-form-item
+        [idx]="idx"
+        [inputClass]="['hugeField']"
+        [inputName]="'authenticationCode'"
+        [inputType]="'text'"
+        [value]="receipt.authenticationCode"
+        [disabled]="true"
+      >
+      </app-input-one-form-item>
+
+      <!-- <app-input-one-form-item
+          [idx]="idx"
+          [inputClass]="['bigField']"
+          [inputName]="'subscriptionHistoric'"
+          [inputType]="'text'"
+          [value]="receipt.subscriptionHistoric"
+          [disabled]="true"
+        >
+        </app-input-one-form-item>
+
+        <app-input-one-form-item
+          [idx]="idx"
+          [inputClass]="['smallField']"
+          [inputName]="'companiesNumber'"
+          [inputType]="'number'"
+          [numberValue]="receipt.companiesNumber"
+          [disabled]="true"
+        >
+        </app-input-one-form-item>
+
+        <app-input-one-form-item
+          [idx]="idx"
+          [inputClass]="['smallField']"
+          [inputName]="'usersNumber'"
+          [inputType]="'number'"
+          [numberValue]="receipt.usersNumber"
+          [disabled]="true"
+        >
+        </app-input-one-form-item>
+
+        <app-input-one-form-item
+          [idx]="idx"
+          [inputClass]="['tinyField']"
+          [inputName]="'price'"
+          [inputType]="'money'"
+          [numberValue]="receipt.price"
+          [disabled]="true"
+        >
+        </app-input-one-form-item> -->
+    </app-update-form>
+  </ng-container>
+</div>

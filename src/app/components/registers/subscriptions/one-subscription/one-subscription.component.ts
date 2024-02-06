@@ -15,6 +15,7 @@ import { NgIf } from '@angular/common';
 import { GridHeaderComponent } from '../../../shared/grid-header/grid-header.component';
 import { IGridHeader } from '../../../shared/grid-header/types';
 import { SubscriptionConfigurationsComponent } from '../../subscription-configurations/subscription-configurations.component';
+import { ReceiptsComponent } from '../../receipts/receipts.component';
 
 @Component({
   selector: 'app-one-subscription',
@@ -22,6 +23,7 @@ import { SubscriptionConfigurationsComponent } from '../../subscription-configur
   imports: [
     OperationalContainerComponent,
     SubscriptionConfigurationsComponent,
+    ReceiptsComponent,
     HttpClientModule,
     UpdateOneFormComponent,
     InputOneFormItemComponent,

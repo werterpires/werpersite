@@ -21,7 +21,6 @@ import { FormErrorService } from '../../shared/form-error/form-error.service';
 import { SubscriptionsUtils } from './subscriptions.utils';
 import { InputFormItemComponent } from '../../shared/input-form-item/input-form-item.component';
 import { SubscriptionsCreateFormComponent } from './subscriptions-create-form/subscriptions-create-form.component';
-
 @Component({
   selector: 'app-subscriptions',
   standalone: true,

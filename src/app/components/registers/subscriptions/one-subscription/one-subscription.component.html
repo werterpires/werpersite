@@ -56,6 +56,15 @@
           ></app-subscription-configurations>
         </ng-container>
       </section>
+
+      <section class="oneItemSection">
+        <h2>Histórico da assinatura</h2>
+        <ng-container
+          *ngIf="subscription && subscription.subscriptionConfigs != undefined"
+        >
+          <app-receipts [receipts]="subscription.receipts"></app-receipts>
+        </ng-container>
+      </section>
     </div>
   </app-operational-container>
 </div>
