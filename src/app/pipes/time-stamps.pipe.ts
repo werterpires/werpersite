@@ -5,7 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class TimeStampsPipe implements PipeTransform {
-  transform(value: string): string {
+  transform(value: string | null): string {
+    if (!value) {
+      return '';
+    }
     const date = new Date(value);
 
     const formatedData = `${date.getFullYear()}-${String(
