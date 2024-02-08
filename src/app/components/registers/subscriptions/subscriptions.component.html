@@ -1,60 +1,64 @@
-<router-outlet></router-outlet>
+<app-operational-container>
+  <router-outlet></router-outlet>
+  <nav class="fixNav"><app-close-component></app-close-component></nav>
 
-<app-grid-header
-  [headers]="headers"
-  (addEmitter)="createForm = true"
-></app-grid-header>
-<div class="gridItens">
-  <ng-container
-    *ngFor="let subscription of allUserSubscriptions; let idx = index"
-  >
-    <app-update-form
-      [updateMessages]="['Confirmar as alterações na assinatura?']"
-      [deleteMessages]="['Deletar a assinatura?']"
-      [validateForm]="utils.validateUpdateForm"
-      [updateData]="utils.newUpdateSubscriptionData(subscription)"
-      [id]="subscription.subscriptionId"
-      (editEmitter)="updateSubscription(idx)"
-      (deleteEmitter)="deleteSubscriptionById(idx)"
+  <app-grid-header
+    [headers]="headers"
+    (addEmitter)="createForm = true"
+  ></app-grid-header>
+
+  <div class="gridItens">
+    <ng-container
+      *ngFor="let subscription of allUserSubscriptions; let idx = index"
     >
-      <app-input-form-item
-        [value]="subscription.subscriptionTitle"
-        [inputClass]="['mediumField']"
-        [inputType]="'text'"
-        [inputName]="'subscriptionTitle'"
-        [idx]="idx"
-        (inputEmitter)="subscription.subscriptionTitle = $event"
-        (blurEmitter)="
-          formErrorService.validateMinMax(
-            updateFormErrors,
-            3,
-            100,
-            subscription.subscriptionTitle,
-            'subscriptionTitle',
-            idx
-          )
-        "
-        [formError]="updateFormErrors['subscriptionTitle']"
-      ></app-input-form-item>
+      <app-update-form
+        [updateMessages]="['Confirmar as alterações na assinatura?']"
+        [deleteMessages]="['Deletar a assinatura?']"
+        [validateForm]="utils.validateUpdateForm"
+        [updateData]="utils.newUpdateSubscriptionData(subscription)"
+        [id]="subscription.subscriptionId"
+        (editEmitter)="updateSubscription(idx)"
+        (deleteEmitter)="deleteSubscriptionById(idx)"
+      >
+        <app-input-form-item
+          [value]="subscription.subscriptionTitle"
+          [inputClass]="['mediumField']"
+          [inputType]="'text'"
+          [inputName]="'subscriptionTitle'"
+          [idx]="idx"
+          (inputEmitter)="subscription.subscriptionTitle = $event"
+          (blurEmitter)="
+            formErrorService.validateMinMax(
+              updateFormErrors,
+              3,
+              100,
+              subscription.subscriptionTitle,
+              'subscriptionTitle',
+              idx
+            )
+          "
+          [formError]="updateFormErrors['subscriptionTitle']"
+        ></app-input-form-item>
 
-      <label class="checkboxLabel miniField">
-        <input
-          type="checkbox"
-          name="subscriptionActive"
-          [id]="'subscriptionActive' + idx"
-          [(ngModel)]="subscription.subscriptionActive"
-        />
-        <span class="customCheckbox"></span>
-      </label>
+        <label class="checkboxLabel miniField">
+          <input
+            type="checkbox"
+            name="subscriptionActive"
+            [id]="'subscriptionActive' + idx"
+            [(ngModel)]="subscription.subscriptionActive"
+          />
+          <span class="customCheckbox"></span>
+        </label>
 
-      <p class="tinyField">{{ subscription.validate | date }}</p>
-    </app-update-form>
+        <p class="tinyField">{{ subscription.validate | date }}</p>
+      </app-update-form>
+    </ng-container>
+  </div>
+  <ng-container *ngIf="createForm">
+    <app-subscriptions-create-form
+      (cancelEmitter)="createForm = false"
+      (createEmitter)="allUserSubscriptions.push($event)"
+    >
+    </app-subscriptions-create-form>
   </ng-container>
-</div>
-<ng-container *ngIf="createForm">
-  <app-subscriptions-create-form
-    (cancelEmitter)="createForm = false"
-    (createEmitter)="allUserSubscriptions.push($event)"
-  >
-  </app-subscriptions-create-form>
-</ng-container>
+</app-operational-container>

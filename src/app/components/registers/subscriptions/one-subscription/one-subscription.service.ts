@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
-import { ICompleteSubscription } from '../types';
+import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
+import { ICompleteSubscription, ISubscription } from '../types';
 import { AuthService } from '../../../shared/sharedServices/auth.service';
 
 @Injectable({

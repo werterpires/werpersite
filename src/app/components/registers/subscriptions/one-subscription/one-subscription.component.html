@@ -1,50 +1,61 @@
 <div class="oneContentContainer">
   <app-operational-container>
-    <div class="oneContent">
+    <router-outlet></router-outlet>
+
+    <app-close-component></app-close-component>
+
+    <app-scroll-content>
       <div class="oneContentHeader">
         <h1>Assinatura</h1>
       </div>
-      <app-update-one-form *ngIf="subscription">
-        <div class="formLine">
-          <app-input-one-form-item
-            [formError]="formErrors['subscriptionTitle']"
-            [inputClass]="['mediumField']"
-            [inputType]="'text'"
-            [inputName]="'subscriptionTitle'"
-            [value]="subscription.subscriptionTitle"
-            [label]="'Título da assinatura'"
-            (inputEmitter)="subscription.subscriptionTitle = $event"
-            (blurEmitter)="
-              formErrorService.validateMinMax(
-                formErrors,
-                3,
-                100,
-                subscription.subscriptionTitle,
-                'subscriptionTitle',
-                0
-              )
-            "
-          ></app-input-one-form-item>
+      <app-update-one-form
+        *ngIf="subscription"
+        [deleteMessages]="['Tem certeza que deseja deletar esta assinatura?']"
+        [id]="subscription.subscriptionId"
+        [updateMessages]="['Confirmar as alterações na assinatura?']"
+        [validateForm]="utils.validateUpdateForm"
+        [updateData]="utils.newUpdateSubscriptionData(subscription)"
+        (editEmitter)="updateSubscription()"
+        (deleteEmitter)="deleteSubscriptionById()"
+      >
+        <app-input-one-form-item
+          [formError]="formErrors['subscriptionTitle']"
+          [inputClass]="['mediumField']"
+          [inputType]="'text'"
+          [inputName]="'subscriptionTitle'"
+          [value]="subscription.subscriptionTitle"
+          [label]="'Título da assinatura'"
+          (inputEmitter)="subscription.subscriptionTitle = $event"
+          (blurEmitter)="
+            formErrorService.validateMinMax(
+              formErrors,
+              3,
+              100,
+              subscription.subscriptionTitle,
+              'subscriptionTitle',
+              0
+            )
+          "
+        ></app-input-one-form-item>
 
-          <app-input-one-form-item
-            [formError]="formErrors['subscriptionActive']"
-            [inputClass]="['tinyField']"
-            [inputType]="'checkbox'"
-            [inputName]="'subscriptionActive'"
-            [booleanValue]="subscription.subscriptionActive"
-            [label]="'Assinatura ativa'"
-            (inputBooleanEmitter)="subscription.subscriptionActive = $event"
-          ></app-input-one-form-item>
+        <app-input-one-form-item
+          [formError]="formErrors['subscriptionActive']"
+          [inputClass]="['tinyField']"
+          [inputType]="'checkbox'"
+          [inputName]="'subscriptionActive'"
+          [booleanValue]="subscription.subscriptionActive"
+          [label]="'Assinatura ativa'"
+          (inputBooleanEmitter)="subscription.subscriptionActive = $event"
+        ></app-input-one-form-item>
 
-          <app-input-one-form-item
-            [inputClass]="['smallField']"
-            [inputType]="'text'"
-            [inputName]="'validate'"
-            [value]="subscription.validate"
-            [label]="'Validade da assinatura'"
-            [disabled]="true"
-          ></app-input-one-form-item>
-        </div>
+        <app-input-one-form-item
+          [inputClass]="['smallField']"
+          [inputType]="'text'"
+          [inputName]="'validate'"
+          [value]="subscription.validate"
+          [label]="'Validade da assinatura'"
+          [disabled]="true"
+        ></app-input-one-form-item>
       </app-update-one-form>
       <section class="oneItemSection">
         <h2>Histórico da assinatura</h2>
@@ -58,13 +69,37 @@
       </section>
 
       <section class="oneItemSection">
-        <h2>Histórico da assinatura</h2>
+        <h2>Pagamentos</h2>
         <ng-container
           *ngIf="subscription && subscription.subscriptionConfigs != undefined"
         >
           <app-receipts [receipts]="subscription.receipts"></app-receipts>
         </ng-container>
       </section>
-    </div>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+      <p>asdf asfasfdasdfasdf</p>
+    </app-scroll-content>
   </app-operational-container>
 </div>
