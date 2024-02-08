@@ -28,7 +28,10 @@ export class UpdateOneFormComponent {
   updateDialog = false;
   deleteDialog = false;
 
-  constructor(private loaderService: LoaderService) {}
+  constructor(
+    private loaderService: LoaderService,
+    private alertsService: AlertsService
+  ) {}
 
   validateUpdateFormAndShowDialog() {
     this.loaderService.showLoader;
@@ -47,5 +50,7 @@ export class UpdateOneFormComponent {
     } else if (emitter === 'update') {
       this.editEmitter.emit();
     }
+    this.updateDialog = false;
+    this.deleteDialog = false;
   }
 }
