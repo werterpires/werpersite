@@ -1,5 +1,6 @@
 .updateForm {
   height: 40px;
+  width: fit-content;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -7,8 +8,8 @@
 
 .formControlIcon {
   width: 20px;
-
   transition: 0.1s ease-in-out all;
+  flex-shrink: 0;
 }
 
 .formControlIcon:hover {
@@ -24,6 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 form:hover {

@@ -1,6 +1,8 @@
-.updateForm {
+.updateOneForm {
   display: flex;
   gap: 10px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .formControlIcon {
