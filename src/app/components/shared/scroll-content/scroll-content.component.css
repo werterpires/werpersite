@@ -1,0 +1,9 @@
+.scrollContent {
+  overflow-y: auto;
+
+  width: 100%;
+  border: 1px blue solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
