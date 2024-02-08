@@ -1,3 +1,4 @@
+
 #operationalContainer {
   max-height: 84vh;
   background-color: var(--gray);
@@ -6,4 +7,8 @@
   border-radius: 20px;
   color: white;
   transition: all 2s ease-in-out;
+}
+
+.closeButton{
+	display: block;
 }

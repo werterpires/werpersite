@@ -30,7 +30,6 @@ export class ContentManagerComponent implements OnInit {
   }
 
   @Input() menuItens: MenuItem[] = [];
-  @Input() components!: Components;
 
   @Output() choiceEmitter = new EventEmitter<string>();
 
