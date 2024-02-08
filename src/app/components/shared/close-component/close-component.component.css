@@ -1,7 +1,15 @@
-:host{
-	display: block;
+:host {
+  display: block;
+
+  height: 0px;
 }
 
-button{
-	margin-left: 20px;
+button {
+  margin-left: 20px;
+}
+
+#closeIcon {
+  width: 25px;
+  cursor: pointer;
+  margin-left: 5px;
 }
